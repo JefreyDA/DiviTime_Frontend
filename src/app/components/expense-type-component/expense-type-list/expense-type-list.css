@@ -1,0 +1,132 @@
+:host {
+  display: block;
+  min-height: calc(100vh - 64px);
+  padding: 44px 24px;
+  box-sizing: border-box;
+  background:
+    radial-gradient(circle at 8% 12%, rgba(251, 8, 0, 0.1), transparent 30%),
+    linear-gradient(145deg, #fff8f7 0%, #f6f7fb 52%, #ffffff 100%);
+}
+
+.container {
+  width: min(100%, 1200px);
+  margin: 0 auto;
+}
+
+.container h2 {
+  margin: 0 0 24px;
+  color: #3f537c;
+  font-size: clamp(1.7rem, 4vw, 2.3rem);
+  font-weight: 750;
+  letter-spacing: -0.04em;
+}
+
+.container > div {
+  overflow-x: auto;
+  border: 1px solid rgba(30, 41, 59, 0.08);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow:
+    0 22px 55px rgba(80, 102, 153, 0.1),
+    0 3px 12px rgba(55, 71, 107, 0.05);
+}
+
+table {
+  width: 100%;
+  min-width: 920px;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: transparent;
+}
+
+:host ::ng-deep .mat-mdc-header-row {
+  height: 62px;
+  background: linear-gradient(135deg, #20283a, #303b52);
+}
+
+:host ::ng-deep .mat-mdc-header-cell {
+  border-bottom: none;
+  color: #ffffff;
+  font-size: 0.73rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+:host ::ng-deep .mat-mdc-row {
+  height: 66px;
+  transition:
+    background-color 160ms ease,
+    transform 160ms ease;
+}
+
+:host ::ng-deep .mat-mdc-row:nth-child(even) {
+  background-color: #fafbfc;
+}
+
+:host ::ng-deep .mat-mdc-row:hover {
+  background-color: #fff1ef;
+}
+
+:host ::ng-deep .mat-mdc-cell {
+  max-width: 260px;
+  border-bottom-color: #edf0f4;
+  color: #475f8c;
+  font-size: 0.88rem;
+}
+
+:host ::ng-deep .mat-column-c1 {
+  width: 70px;
+  color: #246b9a;
+  font-weight: 750;
+}
+
+:host ::ng-deep .mat-column-c2 {
+  min-width: 220px;
+}
+
+:host ::ng-deep .mat-column-c3 {
+  min-width: 220px;
+}
+
+:host ::ng-deep .mat-column-c4,
+:host ::ng-deep .mat-column-c5 {
+  min-width: 125px;
+}
+
+:host ::ng-deep .mat-column-c6,
+:host ::ng-deep .mat-column-c7 {
+  width: 100px;
+  text-align: center;
+}
+
+:host ::ng-deep button[aria-label="Eliminar proyecto"] {
+  --mdc-fab-small-container-color: #fff0ef;
+  --mat-fab-small-foreground-color: #d42018;
+  box-shadow: none;
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease,
+    background-color 160ms ease;
+}
+
+:host ::ng-deep button[aria-label="Eliminar proyecto"]:hover {
+  --mdc-fab-small-container-color: #d42018;
+  --mat-fab-small-foreground-color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(212, 32, 24, 0.26);
+}
+
+@media (max-width: 720px) {
+  :host {
+    padding: 28px 12px;
+  }
+
+  .container h2 {
+    margin-left: 4px;
+  }
+
+  .container > div {
+    border-radius: 14px;
+  }
+}

@@ -1,0 +1,14 @@
+.custom-toolbar {
+  background: #0f172a;
+  color: white;
+  padding: 0 16px;
+}
+
+button[mat-button] {
+  color: white;
+  font-weight: 600;
+}
+
+mat-icon {
+  margin-right: 6px;
+}
