@@ -1,0 +1,21 @@
+<div class="container">
+  <div style="text-align: center;margin: 3%;"><h2>Registrar Tipo de Acuerdos</h2></div>
+  <div style="text-align: center;margin: 3%;">
+    <form [formGroup]="form" (submit)="aceptar()">
+      <mat-form-field class="example-full-width">
+        <mat-label>Nombre del tipo de acuerdo</mat-label>
+        <input matInput placeholder="Dev App Mobile" formControlName="name"/>
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-label>Descripción del tipo de acuerdo</mat-label>
+        <textarea matInput formControlName="description"></textarea>
+      </mat-form-field>
+      <br />
+
+      <div>
+            <button matButton="elevated">Registrar</button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+<mat-toolbar class="custom-toolbar">
+  <button mat-button [matMenuTriggerFor]="menu">
+    <mat-icon>menu</mat-icon>
+    Módulos
+  </button>
+</mat-toolbar>
+
+<mat-menu #menu="matMenu">
+
+  <button mat-menu-item [matMenuTriggerFor]="gastoMenu">
+    <mat-icon>payments</mat-icon>
+    Tipo de Gasto
+  </button>
+
+  <button mat-menu-item>
+    <mat-icon>people</mat-icon>
+    Rol
+  </button>
+
+  <button mat-menu-item>
+    <mat-icon>category</mat-icon>
+    Tipo de Acuerdo
+  </button>
+
+</mat-menu>
+
+<mat-menu #gastoMenu="matMenu">
+
+  <button mat-menu-item routerLink="/expensestype/listar">
+    <mat-icon>list</mat-icon>
+    Listar
+  </button>
+
+  <button mat-menu-item routerLink="/expensestype/register">
+    <mat-icon>add</mat-icon>
+    Registrar
+  </button>
+
+</mat-menu>
