@@ -17,6 +17,11 @@
     Roles
   </button>
 
+  <button mat-menu-item [matMenuTriggerFor]="userMenu">
+    <mat-icon>people</mat-icon>
+    Usuarios
+  </button>
+
   <button mat-menu-item>
     <mat-icon>category</mat-icon>
     Tipo de Acuerdo
@@ -42,6 +47,21 @@
 <mat-menu #rolMenu="matMenu">
 
   <button mat-menu-item routerLink="/role/list">
+    <mat-icon>list</mat-icon>
+    Listar
+  </button>
+
+</mat-menu>
+
+<!--Menu de Rol-->
+<mat-menu #userMenu="matMenu">
+
+  <button mat-menu-item routerLink="/users/insert">
+    <mat-icon>add</mat-icon>
+    Registrar
+  </button>
+
+  <button mat-menu-item routerLink="/users/list">
     <mat-icon>list</mat-icon>
     Listar
   </button>

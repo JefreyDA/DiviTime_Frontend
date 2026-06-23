@@ -1,0 +1,245 @@
+:host {
+  display: block;
+  min-height: calc(100vh - 64px);
+  padding: 44px 24px;
+  box-sizing: border-box;
+  background:
+    radial-gradient(circle at 8% 12%, rgba(251, 8, 0, 0.1), transparent 30%),
+    linear-gradient(145deg, #fff8f7 0%, #f6f7fb 52%, #ffffff 100%);
+}
+
+/* =========================
+   LAYOUT GENERAL
+========================= */
+
+.container {
+  width: min(100%, 1200px);
+  margin: 0 auto;
+}
+
+.container h2 {
+  margin: 0 0 24px;
+  color: #3f537c;
+  font-size: clamp(1.7rem, 4vw, 2.3rem);
+  font-weight: 750;
+  letter-spacing: -0.04em;
+}
+
+/* =========================
+   FILTRO
+========================= */
+
+.filter-section {
+  margin-bottom: 18px;
+  padding: 14px 18px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(30, 41, 59, 0.08);
+  box-shadow: 0 6px 18px rgba(80, 102, 153, 0.08);
+}
+
+.filter-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #475f8c;
+  margin-bottom: 10px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.status-filter {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+/* Radio options */
+:host ::ng-deep .filter-option {
+  display: flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: #f6f7fb;
+  border: 1px solid rgba(30, 41, 59, 0.08);
+  transition: all 0.2s ease;
+}
+
+:host ::ng-deep .filter-option:hover {
+  background: #fff1ef;
+  transform: translateY(-1px);
+}
+
+:host ::ng-deep .filter-option .mat-radio-container {
+  display: none;
+}
+
+/* Dot indicator */
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.dot.active { background: #22c55e; }
+.dot.inactive { background: #ef4444; }
+.dot.all { background: #3b82f6; }
+
+/* Selected radio */
+:host ::ng-deep .mat-radio-checked.filter-option {
+  background: #20283a;
+  color: white;
+  border-color: transparent;
+}
+
+:host ::ng-deep .mat-radio-checked.filter-option .dot {
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
+}
+
+/* =========================
+   TABLA CONTAINER
+========================= */
+
+.container > div {
+  overflow-x: auto;
+  border: 1px solid rgba(30, 41, 59, 0.08);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow:
+    0 22px 55px rgba(80, 102, 153, 0.1),
+    0 3px 12px rgba(55, 71, 107, 0.05);
+}
+
+table {
+  width: 100%;
+  min-width: 920px;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+/* =========================
+   MATERIAL TABLE
+========================= */
+
+:host ::ng-deep .mat-mdc-header-row {
+  height: 62px;
+  background: linear-gradient(135deg, #20283a, #303b52);
+}
+
+:host ::ng-deep .mat-mdc-header-cell {
+  border-bottom: none;
+  color: #ffffff;
+  font-size: 0.73rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+:host ::ng-deep .mat-mdc-row {
+  height: 66px;
+  transition: background-color 160ms ease, transform 160ms ease;
+}
+
+:host ::ng-deep .mat-mdc-row:nth-child(even) {
+  background-color: #fafbfc;
+}
+
+:host ::ng-deep .mat-mdc-row:hover {
+  background-color: #fff1ef;
+}
+
+:host ::ng-deep .mat-mdc-cell {
+  max-width: 260px;
+  border-bottom-color: #edf0f4;
+  color: #475f8c;
+  font-size: 0.88rem;
+}
+
+/* =========================
+   COLUMNAS
+========================= */
+
+:host ::ng-deep .mat-column-c1 {
+  width: 70px;
+  color: #246b9a;
+  font-weight: 750;
+}
+
+:host ::ng-deep .mat-column-c2,
+:host ::ng-deep .mat-column-c3 {
+  min-width: 30px;
+}
+
+:host ::ng-deep .mat-column-c4,
+:host ::ng-deep .mat-column-c5 {
+  min-width: 30px;
+}
+
+:host ::ng-deep .mat-column-c6,
+:host ::ng-deep .mat-column-c7 {
+  width: 120px;
+  text-align: center;
+}
+
+/* =========================
+   STATUS BADGE
+========================= */
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 90px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.status-active {
+  background: rgba(34, 197, 94, 0.14);
+  color: #15803d;
+  border: 1px solid rgba(34, 197, 94, 0.28);
+}
+
+.status-inactive {
+  background: rgba(239, 68, 68, 0.14);
+  color: #b91c1c;
+  border: 1px solid rgba(239, 68, 68, 0.28);
+}
+
+/* =========================
+   BOTONES
+========================= */
+
+.btn-delete {
+  color: #d42018;
+  background: #fff0ef;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+}
+
+.btn-delete:hover {
+  color: #ffffff;
+  background: #d42018;
+  transform: translateY(90px);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 720px) {
+  :host {
+    padding: 28px 12px;
+  }
+
+  .container h2 {
+    margin-left: 4px;
+  }
+
+  .container > div {
+    border-radius: 14px;
+  }
+}

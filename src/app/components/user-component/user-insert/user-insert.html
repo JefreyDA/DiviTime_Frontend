@@ -1,0 +1,103 @@
+<div class="container">
+  <div style="text-align: center; margin: 3%"><h2>Registrar Usuarios</h2></div>
+  <div style="text-align: center; margin: 3%">
+    <form [formGroup]="form" (submit)="aceptar()">
+      <mat-form-field class="example-full-width">
+        <mat-label>Nombre</mat-label>
+        <input matInput placeholder="Dev App Mobile" formControlName="name" />
+        <mat-error *ngIf="form.get('name')?.hasError('required')">
+          El nombre es obligatorio
+        </mat-error>
+        <mat-error *ngIf="form.get('name')?.hasError('maxlength')">
+          Máximo 50 caracteres
+        </mat-error>
+      </mat-form-field>
+
+      <br />
+
+      <mat-form-field>
+        <mat-label>Apellido Paterno</mat-label>
+        <input matInput placeholder="Dev App Mobile" formControlName="paternalSurName" />
+        <mat-error *ngIf="form.get('paternalSurName')?.hasError('required')">
+          El apellido paterno es obligatorio
+        </mat-error>
+        <mat-error *ngIf="form.get('paternalSurName')?.hasError('maxlength')">
+          Máximo 50 caracteres
+        </mat-error>
+      </mat-form-field>
+
+      <br />
+
+      <mat-form-field>
+        <mat-label>Apellido Materno</mat-label>
+        <input matInput placeholder="Dev App Mobile" formControlName="maternalSurName" />
+        <mat-error *ngIf="form.get('maternalSurName')?.hasError('required')">
+          El apellido materno obligatorio
+        </mat-error>
+        <mat-error *ngIf="form.get('maternalSurName')?.hasError('maxlength')">
+          Máximo 50 caracteres
+        </mat-error>
+      </mat-form-field>
+
+      <br />
+
+      <mat-form-field>
+        <mat-label>Fecha de Nacimiento</mat-label>
+        <input matInput [matDatepicker]="picker1" formControlName="birthDate" />
+        <mat-error *ngIf="form.get('birthDate')?.hasError('required')">
+          La fecha de nacimiento es obligatoria
+        </mat-error>
+        <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+      <br />
+
+      <mat-form-field>
+        <mat-label>Correo</mat-label>
+        <input matInput placeholder="Dev App Mobile" formControlName="email" />
+        <mat-error *ngIf="form.get('email')?.hasError('required')">
+          El correo es obligatorio
+        </mat-error>
+        <mat-error *ngIf="form.get('email')?.hasError('maxlength')">
+          Máximo 100 caracteres
+        </mat-error>
+      </mat-form-field>
+
+      <br />
+
+      <mat-form-field>
+        <mat-label>Rol</mat-label>
+        <mat-select formControlName="idRole">
+          <mat-option *ngFor="let role of roles" [value]="role.idRole">
+            {{ role.nameRole }}
+          </mat-option>
+          <mat-error *ngIf="form.get('idRole')?.hasError('required')">
+            Seleccione un rol
+          </mat-error>
+        </mat-select>
+      </mat-form-field>
+
+      <br />
+
+      <mat-form-field>
+        <mat-label>Contraseña</mat-label>
+        <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password" />
+        <mat-error *ngIf="form.get('password')?.hasError('required')">
+            Es obligatorio ingresar una contraseña
+          </mat-error>
+        <mat-error *ngIf="form.get('password')?.hasError('maxlength')">
+          Máximo 150 caracteres
+        </mat-error>
+        <button mat-icon-button matSuffix type="button" (click)="hidePassword = !hidePassword">
+          <mat-icon>
+            {{ hidePassword ? 'visibility_off' : 'visibility' }}
+          </mat-icon>
+        </button>
+      </mat-form-field>
+
+      <div>
+        <button matButton="elevated">Registrar</button>
+      </div>
+    </form>
+  </div>
+</div>
