@@ -9,6 +9,10 @@ import { RolList } from './components/rolcomponent/rol-list/rol-list';
 import { UserComponent } from './components/user-component/user-component';
 import { UserList } from './components/user-component/user-list/user-list';
 import { UserInsert } from './components/user-component/user-insert/user-insert';
+import { Eventcomponent } from './components/eventcomponent/eventcomponent';
+import { EventList } from './components/eventcomponent/event-list/event-list';
+import { EventInsert } from './components/eventcomponent/event-insert/event-insert';
+import { EventUpdate } from './components/eventcomponent/event-update/event-update';
 
 export const routes: Routes = [
   {
@@ -57,4 +61,22 @@ export const routes: Routes = [
       //},
     ],
   },
+  {
+    path: 'events',
+    component: Eventcomponent,
+    children: [
+      {
+        path: 'list',
+        component: EventList
+      },
+      {
+        path: 'insert',
+        component: EventInsert
+      },
+      {
+        path: 'update/:id',
+        component: EventUpdate
+      }
+    ]
+  }
 ];

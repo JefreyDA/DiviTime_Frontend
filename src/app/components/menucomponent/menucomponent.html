@@ -22,6 +22,11 @@
     Usuarios
   </button>
 
+  <button mat-menu-item [matMenuTriggerFor]="eventMenu">
+    <mat-icon>event</mat-icon>
+    Eventos
+  </button>
+
   <button mat-menu-item>
     <mat-icon>category</mat-icon>
     Tipo de Acuerdo
@@ -62,6 +67,21 @@
   </button>
 
   <button mat-menu-item routerLink="/users/list">
+    <mat-icon>list</mat-icon>
+    Listar
+  </button>
+
+</mat-menu>
+
+<!--Menu de Eventos-->
+<mat-menu #eventMenu="matMenu">
+
+  <button mat-menu-item routerLink="/events/insert">
+    <mat-icon>add</mat-icon>
+    Registrar
+  </button>
+
+  <button mat-menu-item routerLink="/events/list">
     <mat-icon>list</mat-icon>
     Listar
   </button>
