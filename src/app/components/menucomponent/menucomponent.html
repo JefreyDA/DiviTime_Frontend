@@ -12,9 +12,9 @@
     Tipo de Gasto
   </button>
 
-  <button mat-menu-item>
-    <mat-icon>people</mat-icon>
-    Rol
+  <button mat-menu-item [matMenuTriggerFor]="rolMenu">
+    <mat-icon>face icon</mat-icon>
+    Roles
   </button>
 
   <button mat-menu-item>
@@ -24,6 +24,7 @@
 
 </mat-menu>
 
+<!--Menu de Tipo de gasto-->
 <mat-menu #gastoMenu="matMenu">
 
   <button mat-menu-item routerLink="/expensestype/listar">
@@ -34,6 +35,15 @@
   <button mat-menu-item routerLink="/expensestype/register">
     <mat-icon>add</mat-icon>
     Registrar
+  </button>
+
+</mat-menu>
+<!--Menu de Rol-->
+<mat-menu #rolMenu="matMenu">
+
+  <button mat-menu-item routerLink="/role/list">
+    <mat-icon>list</mat-icon>
+    Listar
   </button>
 
 </mat-menu>
