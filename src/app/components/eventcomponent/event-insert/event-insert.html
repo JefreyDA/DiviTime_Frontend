@@ -1,16 +1,18 @@
 <div class="container">
-  <div style="text-align: center; margin: 3%;"><h2>Registrar Evento</h2></div>
+  <div style="text-align: center; margin: 3%;">
+    <h2>Registrar Evento</h2>
+  </div>
   <div style="text-align: center; margin: 3%;">
     <form [formGroup]="form" (submit)="aceptar()">
 
       <mat-form-field class="example-full-width">
         <mat-label>Título del evento</mat-label>
-        <input matInput placeholder="Cena familiar" formControlName="title"/>
+        <input matInput placeholder="Cena familiar" formControlName="title" />
         @if (form.get('title')?.hasError('required')) {
-          <mat-error>El título es obligatorio</mat-error>
+        <mat-error>El título es obligatorio</mat-error>
         }
         @if (form.get('title')?.hasError('maxlength')) {
-          <mat-error>Máximo 50 caracteres</mat-error>
+        <mat-error>Máximo 50 caracteres</mat-error>
         }
       </mat-form-field>
       <br />
@@ -19,70 +21,67 @@
         <mat-label>Detalles</mat-label>
         <textarea matInput formControlName="details"></textarea>
         @if (form.get('details')?.hasError('required')) {
-          <mat-error>Los detalles son obligatorios</mat-error>
+        <mat-error>Los detalles son obligatorios</mat-error>
         }
         @if (form.get('details')?.hasError('maxlength')) {
-          <mat-error>Máximo 200 caracteres</mat-error>
+        <mat-error>Máximo 200 caracteres</mat-error>
         }
       </mat-form-field>
       <br />
 
       <mat-form-field class="example-full-width">
         <mat-label>Fecha de inicio</mat-label>
-        <input matInput [matDatepicker]="picker1" formControlName="startdate"/>
+        <input matInput [matDatepicker]="picker1" formControlName="startdate" />
         <mat-hint>MM/DD/YYYY</mat-hint>
         <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
         <mat-datepicker #picker1></mat-datepicker>
         @if (form.get('startdate')?.hasError('required')) {
-          <mat-error>La fecha de inicio es obligatoria</mat-error>
+        <mat-error>La fecha de inicio es obligatoria</mat-error>
         }
       </mat-form-field>
       <br />
 
       <mat-form-field class="example-full-width">
         <mat-label>Fecha fin</mat-label>
-        <input matInput [matDatepicker]="picker2" formControlName="enddate"/>
+        <input matInput [matDatepicker]="picker2" formControlName="enddate" />
         <mat-hint>MM/DD/YYYY</mat-hint>
         <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
         <mat-datepicker #picker2></mat-datepicker>
         @if (form.get('enddate')?.hasError('required')) {
-          <mat-error>La fecha fin es obligatoria</mat-error>
+        <mat-error>La fecha fin es obligatoria</mat-error>
         }
       </mat-form-field>
       <br />
 
       <mat-form-field class="example-full-width">
         <mat-label>Fecha de creación</mat-label>
-        <input matInput [matDatepicker]="picker3" formControlName="creationdate"/>
+        <input matInput [matDatepicker]="picker3" formControlName="creationdate" />
         <mat-hint>MM/DD/YYYY</mat-hint>
         <mat-datepicker-toggle matIconSuffix [for]="picker3"></mat-datepicker-toggle>
         <mat-datepicker #picker3></mat-datepicker>
         @if (form.get('creationdate')?.hasError('required')) {
-          <mat-error>La fecha de creación es obligatoria</mat-error>
+        <mat-error>La fecha de creación es obligatoria</mat-error>
         }
       </mat-form-field>
       <br />
 
       <mat-form-field class="example-full-width">
         <mat-label>Ubicación</mat-label>
-        <input matInput placeholder="Calle las flores 123" formControlName="location"/>
+        <input matInput placeholder="Calle las flores 123" formControlName="location" />
         @if (form.get('location')?.hasError('required')) {
-          <mat-error>La ubicación es obligatoria</mat-error>
+        <mat-error>La ubicación es obligatoria</mat-error>
         }
         @if (form.get('location')?.hasError('maxlength')) {
-          <mat-error>Máximo 100 caracteres</mat-error>
+        <mat-error>Máximo 100 caracteres</mat-error>
         }
       </mat-form-field>
       <br />
 
       <mat-form-field class="example-full-width">
         <mat-label>ID Usuario</mat-label>
-        <input matInput type="number" formControlName="iduser"/>
+        <input matInput type="number" formControlName="iduser" />
         @if (form.get('iduser')?.hasError('required')) {
-          <mat-error>El ID de usuario es obligatorio</mat-error>
-        }
-        @if (form.get('iduser')?.hasError('min')) {
-          <mat-error>El ID debe ser mayor a 0</mat-error>
+        <mat-error>El ID de usuario es obligatorio</mat-error>
         }
       </mat-form-field>
       <br />

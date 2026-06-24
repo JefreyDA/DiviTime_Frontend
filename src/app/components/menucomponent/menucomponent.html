@@ -26,6 +26,11 @@
     <mat-icon>event</mat-icon>
     Eventos
   </button>
+  
+  <button mat-menu-item [matMenuTriggerFor]="familyMenu">
+    <mat-icon>people</mat-icon>
+    Familias
+  </button>
 
   <button mat-menu-item>
     <mat-icon>category</mat-icon>
@@ -82,6 +87,21 @@
   </button>
 
   <button mat-menu-item routerLink="/events/list">
+    <mat-icon>list</mat-icon>
+    Listar
+  </button>
+
+</mat-menu>
+
+<!--Menu de Familias-->
+<mat-menu #familyMenu="matMenu">
+
+  <button mat-menu-item routerLink="/families/insert">
+    <mat-icon>add</mat-icon>
+    Registrar
+  </button>
+
+  <button mat-menu-item routerLink="/families/list">
     <mat-icon>list</mat-icon>
     Listar
   </button>

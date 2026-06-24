@@ -3,30 +3,30 @@
 
   <div class="cards-container">
     @for (element of listEvents; track element.idEvent) {
-      <mat-card class="evento-card">
+    <mat-card class="evento-card">
 
-        <mat-card-header>
-          <mat-card-title>{{ element.titleEvent }}</mat-card-title>
-          <mat-card-subtitle>ID: {{ element.idEvent }}</mat-card-subtitle>
-        </mat-card-header>
+      <mat-card-header>
+        <mat-card-title>{{ element.titleEvent }}</mat-card-title>
+        <mat-card-subtitle>ID: {{ element.idEvent }}</mat-card-subtitle>
+      </mat-card-header>
 
-        <mat-card-content>
-          <p><span class="label">Detalles:</span> {{ element.detailsEvent }}</p>
-          <p><span class="label">Ubicación:</span> {{ element.locationEvent }}</p>
-          <p><span class="label">Fecha Inicio:</span> {{ element.startDateEvent }}</p>
-          <p><span class="label">Fecha Fin:</span> {{ element.endDateEvent }}</p>
-          <p><span class="label">Fecha de Creación:</span> {{ element.creationDateEvent }}</p>
-          <p><span class="label">Creador:</span> {{ element.idUser }}</p>
-        </mat-card-content>
-        
-        <mat-card-actions align="end">
-            <button class="btn-accion" (click)="eliminar(element.idEvent)">
-                <mat-icon>delete</mat-icon>
-            </button>
-            <button class="btn-accion" [routerLink]="['/events/update', element.idEvent]">
-                <mat-icon>edit</mat-icon>
-            </button>
-        </mat-card-actions>
+      <mat-card-content>
+        <p><span class="label">Detalles:</span> {{ element.detailsEvent }}</p>
+        <p><span class="label">Ubicación:</span> {{ element.locationEvent }}</p>
+        <p><span class="label">Fecha Inicio:</span> {{ element.startDateEvent }}</p>
+        <p><span class="label">Fecha Fin:</span> {{ element.endDateEvent }}</p>
+        <p><span class="label">Fecha de Creación:</span> {{ element.creationDateEvent }}</p>
+        <p><span class="label">Creador:</span> {{ element.idUser }}</p>
+      </mat-card-content>
+
+      <mat-card-actions align="end">
+        <button class="btn-accion" (click)="eliminar(element.idEvent)">
+          <mat-icon>delete</mat-icon>
+        </button>
+        <button class="btn-accion" [routerLink]="['/events/update', element.idEvent]">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </mat-card-actions>
     </mat-card>
     }
   </div>
