@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { Eventservice } from '../../../services/event-service';
@@ -15,7 +15,7 @@ import { Event } from '../../../models/eventModels/Event';
 export class EventList implements OnInit {
   listEvents: Event[] = []
 
-  constructor(private eS: Eventservice) {}
+  constructor(private eS: Eventservice) { }
 
   ngOnInit(): void {
     this.cargarEventos();

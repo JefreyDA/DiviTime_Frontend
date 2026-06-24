@@ -33,7 +33,7 @@ export class EventInsert implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder,
     private snackBar: MatSnackBar,
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
