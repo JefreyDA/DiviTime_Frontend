@@ -35,7 +35,7 @@ export class EventUpdate implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private snackBar: MatSnackBar,
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
