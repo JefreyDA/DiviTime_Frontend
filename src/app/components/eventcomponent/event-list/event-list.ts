@@ -5,6 +5,7 @@ import { RouterLink } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { Eventservice } from '../../../services/event-service';
 import { Event } from '../../../models/eventModels/Event';
+import { provideClientHydration } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-event-list',

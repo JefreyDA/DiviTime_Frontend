@@ -1,0 +1,33 @@
+<div class="container">
+  <h2>Lista de Chats</h2>
+
+  <table mat-table [dataSource]="listChats" class="mat-elevation-z4">
+
+    <ng-container matColumnDef="startDateChat">
+      <th mat-header-cell *matHeaderCellDef>Fecha de inicio</th>
+      <td mat-cell *matCellDef="let chat">{{ chat.startDateChat | date: 'dd/MM/yyyy' }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="frequencyChat">
+      <th mat-header-cell *matHeaderCellDef>Frecuencia</th>
+      <td mat-cell *matCellDef="let chat">{{ chat.frequencyChat }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="idUser">
+      <th mat-header-cell *matHeaderCellDef>ID Usuario</th>
+      <td mat-cell *matCellDef="let chat">{{ chat.idUser }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="acciones">
+      <th mat-header-cell *matHeaderCellDef>Acciones</th>
+      <td mat-cell *matCellDef="let chat">
+        <button mat-icon-button color="warn">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>

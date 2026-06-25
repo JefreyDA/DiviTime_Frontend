@@ -32,6 +32,11 @@
     Tipo de Acuerdo
   </button>
 
+  <button mat-menu-item [matMenuTriggerFor]="chatMenu">
+    <mat-icon>chat</mat-icon>
+    Chat Emocional
+  </button>
+
 </mat-menu>
 
 <!--Menu de Tipo de gasto-->
@@ -86,4 +91,18 @@
     Listar
   </button>
 
+</mat-menu>
+
+<!--Menu de Chat-->
+<mat-menu #chatMenu="matMenu">
+
+  <button mat-menu-item routerLink="/chats/insert">
+    <mat-icon>add</mat-icon>
+    Registrar
+  </button>
+
+  <button mat-menu-item routerLink="/chats/list">
+    <mat-icon>list</mat-icon>
+    Listar
+  </button>
 </mat-menu>
