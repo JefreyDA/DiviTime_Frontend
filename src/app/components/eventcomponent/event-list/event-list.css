@@ -103,3 +103,47 @@
     width: 100%;
   }
 }
+
+mat-paginator {
+  margin-top: 24px;
+  background: transparent;
+}
+
+.calendar-title {
+  margin-top: 40px;
+  color: #3f537c;
+  font-size: clamp(1.7rem, 4vw, 2.3rem);
+  font-weight: 750;
+  letter-spacing: -0.04em;
+}
+
+full-calendar {
+  --fc-border-color: rgba(30, 41, 59, 0.08);
+  --fc-event-bg-color: #246b9a;
+  --fc-event-border-color: #246b9a;
+  --fc-today-bg-color: rgba(251, 8, 0, 0.06);
+  --fc-button-bg-color: #3f537c;
+  --fc-button-border-color: #3f537c;
+  --fc-button-hover-bg-color: #246b9a;
+  --fc-button-active-bg-color: #246b9a;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow:
+    0 22px 55px rgba(80, 102, 153, 0.1),
+    0 3px 12px rgba(55, 71, 107, 0.05);
+  background: rgba(255, 255, 255, 0.96);
+  padding: 16px;
+}
+
+:host ::ng-deep .fc .fc-toolbar-title {
+  color: #3f537c;
+  font-weight: 750;
+}
+
+:host ::ng-deep .fc .fc-col-header-cell-cushion {
+  color: #246b9a;
+  font-weight: 600;
+}
