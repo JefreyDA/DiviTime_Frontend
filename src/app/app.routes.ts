@@ -13,6 +13,10 @@ import { Eventcomponent } from './components/eventcomponent/eventcomponent';
 import { EventList } from './components/eventcomponent/event-list/event-list';
 import { EventInsert } from './components/eventcomponent/event-insert/event-insert';
 import { EventUpdate } from './components/eventcomponent/event-update/event-update';
+import { Chatcomponent } from './components/chatcomponent/chatcomponent';
+import { ChatBot } from './components/chatcomponent/chat-bot/chat-bot';
+import { ChatInsert } from './components/chatcomponent/chat-insert/chat-insert';
+import { ChatList } from './components/chatcomponent/chat-list/chat-list';
 
 export const routes: Routes = [
   {
@@ -78,5 +82,24 @@ export const routes: Routes = [
         component: EventUpdate
       }
     ]
-  }
+  },
+  {
+    path: 'chats',
+    component: Chatcomponent,
+    children: [
+      {
+        path:'insert',
+        component: ChatInsert
+      },
+      {
+        path:'list',
+        component: ChatList
+      },
+      {
+        path: 'bot/:idChat',
+        component: ChatBot,
+      }
+    ],
+  },
+
 ];

@@ -22,7 +22,7 @@ import interactionPlugin from '@fullcalendar/interaction';
     MatPaginatorModule,
     RouterLink,
     AsyncPipe,
-    FullCalendarModule,
+    FullCalendarModule
   ],
   templateUrl: './event-list.html',
   styleUrl: './event-list.css',

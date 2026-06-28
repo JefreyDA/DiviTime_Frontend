@@ -5,16 +5,17 @@ import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { DatePipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-chat-list',
-  imports: [MatTableModule, MatIconModule, MatButtonModule, DatePipe],
+  imports: [MatTableModule, MatIconModule, MatButtonModule, DatePipe, RouterLink],
   templateUrl: './chat-list.html',
   styleUrl: './chat-list.css',
 })
 export class ChatList implements OnInit{
   listChats: Chat[] = []
-  displayedColumns: string[] = ['startDateChat', 'frequencyChat', 'idUser', 'acciones'];
+  displayedColumns: string[] = ['startDateChat', 'frequencyChat', 'idUser','asistente', 'acciones'];
 
   constructor(
     private cS: ChatService,

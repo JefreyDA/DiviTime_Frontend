@@ -18,6 +18,17 @@
       <td mat-cell *matCellDef="let chat">{{ chat.idUser }}</td>
     </ng-container>
 
+    <ng-container matColumnDef="asistente">
+      <th mat-header-cell *matHeaderCellDef>Asistente</th>
+      <td mat-cell *matCellDef="let chat">
+        <button mat-icon-button color="primary" 
+        [routerLink]="['/chats/bot', chat.idChat]"
+          matTooltip="Abrir asistente Divi">
+          <mat-icon>chat</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
     <ng-container matColumnDef="acciones">
       <th mat-header-cell *matHeaderCellDef>Acciones</th>
       <td mat-cell *matCellDef="let chat">

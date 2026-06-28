@@ -1,0 +1,78 @@
+<div class="chat-wrapper">
+  <mat-card class="chat-card">
+
+    <mat-card-header class="chat-header">
+      <mat-icon mat-card-avatar class="avatar-icon">support_agent</mat-icon>
+      <mat-card-title>Divi</mat-card-title>
+      <mat-card-subtitle>Asistente de apoyo emocional</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div class="messages-container" #messagesContainer>
+
+        @if (messages.length === 0 && !isLoading) {
+          <div class="welcome-message">
+            <mat-icon class="welcome-icon">favorite</mat-icon>
+            <p>Hola, soy Divi. Estoy aquí para escucharte y acompañarte.</p>
+            <p class="welcome-sub">¿Cómo te sientes hoy?</p>
+          </div>
+        }
+
+        @for (msg of messages; track msg.idInteraction) {
+          <div class="message-row" [class.user-row]="msg.senderRole === 'USER'">
+            @if (msg.senderRole === 'BOT') {
+              <mat-icon class="bot-avatar">support_agent</mat-icon>
+            }
+            <div class="bubble"
+                 [class.user-bubble]="msg.senderRole === 'USER'"
+                 [class.bot-bubble]="msg.senderRole === 'BOT'">
+              <p class="bubble-text">{{ msg.messageText }}</p>
+              <span class="bubble-time">
+                {{ msg.interactionDate | date:'HH:mm' }}
+              </span>
+            </div>
+          </div>
+        }
+
+        @if (isLoading) {
+          <div class="message-row">
+            <mat-icon class="bot-avatar">support_agent</mat-icon>
+            <div class="bubble bot-bubble typing-bubble">
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+            </div>
+          </div>
+        }
+
+        @if (errorMsg) {
+          <div class="error-msg">
+            <mat-icon>error_outline</mat-icon> {{ errorMsg }}
+          </div>
+        }
+
+      </div>
+    </mat-card-content>
+
+    <mat-card-actions class="chat-actions">
+      <mat-form-field appearance="outline" class="message-input">
+        <mat-label>Escribe tu mensaje...</mat-label>
+        <textarea matInput
+                  [(ngModel)]="newMessage"
+                  (keydown)="onEnter($event)"
+                  [disabled]="isLoading"
+                  cdkTextareaAutosize
+                  cdkAutosizeMinRows="1"
+                  cdkAutosizeMaxRows="4">
+        </textarea>
+      </mat-form-field>
+      <button mat-fab color="primary"
+              (click)="sendMessage()"
+              [disabled]="!newMessage.trim() || isLoading"
+              aria-label="Enviar mensaje">
+        <mat-icon>send</mat-icon>
+      </button>
+    </mat-card-actions>
+
+  </mat-card>
+</div>
