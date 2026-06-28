@@ -37,4 +37,9 @@ export class UserService {
   deleteUser(id: number) {
     return this.http.delete(`${this.url}/${id}`, { responseType: `text` });
   }
+
+  //Método para obtener a un usuario mediante su ID
+  getById(id:number){
+    return this.http.get<InsertingUsers>(`${this.url}/list-user-by-id/${id}`)
+  }
 }

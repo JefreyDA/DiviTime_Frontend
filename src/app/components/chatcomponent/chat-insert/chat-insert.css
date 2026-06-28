@@ -1,0 +1,25 @@
+/* Asegura que el campo de texto de la frecuencia ocupe el mismo ancho */
+mat-form-field {
+  width: 60%;
+}
+
+/* Estilo base para los botones de acción para mantener consistencia */
+button[mat-raised-button] {
+  padding: 0.5rem 1.25rem;
+  font-size: 1.1rem;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+/* Efecto sutil al presionar cualquier botón */
+button[mat-raised-button]:active {
+  transform: scale(0.98);
+}
+
+/* Estilo cuando el botón de enviar está deshabilitado (formulario inválido) */
+button[mat-raised-button]:disabled {
+  background-color: #e0e0e0 !important;
+  color: #a6a6a6 !important;
+  cursor: not-allowed;
+}
