@@ -20,6 +20,11 @@ import { FamilyUpdate } from './components/familycomponent/family-update/family-
 import { Authenticate } from './components/authenticate/authenticate';
 import { Home } from './components/home/home';
 
+import { Chatcomponent } from './components/chatcomponent/chatcomponent';
+import { ChatBot } from './components/chatcomponent/chat-bot/chat-bot';
+import { ChatInsert } from './components/chatcomponent/chat-insert/chat-insert';
+import { ChatList } from './components/chatcomponent/chat-list/chat-list';
+
 export const routes: Routes = [
 
    {
@@ -79,8 +84,8 @@ export const routes: Routes = [
         component: UserInsert,
       }
       //{
-        //path: 'edits/:email',
-        //component: UserUpdate,
+      //path: 'edits/:email',
+      //component: UserUpdate,
       //},
     ],
   },
@@ -103,21 +108,22 @@ export const routes: Routes = [
     ]
   },
   {
-    path: 'families',
-    component: Familycomponent,
+    path: 'chats',
+    component: Chatcomponent,
     children: [
       {
-        path: 'list',
-        component: FamilyList
+        path:'insert',
+        component: ChatInsert
       },
       {
-        path: 'insert',
-        component: FamilyInsert
+        path:'list',
+        component: ChatList
       },
       {
-        path: 'update/:id',
-        component: FamilyUpdate
+        path: 'bot/:idChat',
+        component: ChatBot,
       }
-    ]
-  }
+    ],
+  },
+
 ];

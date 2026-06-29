@@ -1,0 +1,51 @@
+<div class="container">
+  <div style="text-align: center; margin: 3%;">
+    <h2>Registrar Chat Emocional</h2>
+  </div>
+  <div style="text-align: center; margin: 3%;">
+    <form [formGroup]="form" (submit)="registrarChat()">
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Frecuencia de Chat</mat-label>
+        <input matInput type="number" placeholder="Ej. 5" formControlName="frequencyChat" />
+        @if (form.get('frequencyChat')?.hasError('required')) {
+        <mat-error>La frecuencia es obligatoria</mat-error>
+        }
+        @if (form.get('frequencyChat')?.hasError('min')) {
+        <mat-error>Debe ser mayor que 0</mat-error>
+        }
+        @if (form.get('frequencyChat')?.hasError('max')) {
+        <mat-error>Debe ser menor que 100</mat-error>
+        }
+      </mat-form-field>
+      <br />
+
+      <mat-form-field class="example-full-width">
+        <mat-label>ID Usuario</mat-label>
+
+        <input matInput type="number" placeholder="Ingrese el ID del usuario" formControlName="idUser" />
+
+        @if (form.get('idUser')?.hasError('required')) {
+        <mat-error>El ID es obligatorio</mat-error>
+        }
+
+        @if (form.get('idUser')?.hasError('userNotFound')) {
+        <mat-error>El usuario no existe</mat-error>
+        }
+      </mat-form-field>
+
+      <br />
+
+      <div>
+        <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+          Iniciar Chat Emocional
+        </button>
+        &nbsp;
+        <button mat-raised-button color="warn" type="button" routerLink="/chats">
+          Cancelar
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>

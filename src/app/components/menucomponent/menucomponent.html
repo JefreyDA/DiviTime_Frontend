@@ -51,6 +51,11 @@
       Familias
     </button>
 
+    <button mat-menu-item [matMenuTriggerFor]="chatMenu">
+      <mat-icon>chat</mat-icon>
+      Chat Emocional
+    </button>
+
   }
 
   <!-- TUTOR LEGAL -->
@@ -147,9 +152,31 @@
   </button>
 </mat-menu>
 
+<!-- ===================== CHAT ===================== -->
+
+<mat-menu #chatMenu="matMenu">
+
+  <button mat-menu-item routerLink="/chats/insert">
+    <mat-icon>add</mat-icon>
+    Registrar
+  </button>
+
+  <button mat-menu-item routerLink="/chats/list">
+    <mat-icon>list</mat-icon>
+    Listar
+  </button>
+
+  <button mat-menu-item routerLink="/chats/bot/:idChat">
+    <mat-icon>smart_toy</mat-icon>
+    Bot
+  </button>
+
+</mat-menu>
+
 <!-- ===================== FAMILIAS ===================== -->
 
 <mat-menu #familyMenu="matMenu">
+
   <button mat-menu-item routerLink="/families/insert">
     <mat-icon>add</mat-icon>
     Registrar
@@ -159,4 +186,5 @@
     <mat-icon>list</mat-icon>
     Listar
   </button>
+
 </mat-menu>
