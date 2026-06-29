@@ -1,17 +1,165 @@
-<div class="container" style="text-align: center">
-  <div>
-    <img src="assets/logo.png" alt="Logo de la empresa" />
+
+<!-- ================= HEADER ================= -->
+<header>
+  <div class="container">
+    <div class="logo">DiviTime</div>
+
+    <nav>
+      <ul class="navbar-links">
+        <li><a href="#funcionalidades">Funcionalidades</a></li>
+        <li><a href="#beneficios">Beneficios</a></li>
+        <li><a href="#">Ayuda</a></li>
+      </ul>
+    </nav>
   </div>
-  <h2>Inicie sesión</h2>
-  <mat-form-field class="example-full-width">
-    <mat-label>Usuario</mat-label>
-    <input matInput placeholder="Username" [(ngModel)]="username" />
-  </mat-form-field>
-  <br />
-  <mat-form-field class="example-full-width">
-    <mat-label>Password</mat-label>
-    <input type="password" matInput placeholder="Password" [(ngModel)]="password" />
-  </mat-form-field>
-  <br />
-  <button mat-raised-button  (click)="login()">Ingresar</button>
-</div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+
+  <div class="container hero-content">
+
+    <!-- TEXTO + LOGIN -->
+    <div class="hero-text">
+
+      <h1>Crianza coordinada, hijos felices</h1>
+
+      <p>
+        Organiza horarios, tareas y actividades entre padres separados.
+        Menos conflictos, más bienestar para tus hijos.
+      </p>
+
+      <!-- LOGIN -->
+      <form id="login-form">
+
+        <h2>Iniciar sesión</h2>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Correo</mat-label>
+          <input matInput [(ngModel)]="username" name="username" />
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Contraseña</mat-label>
+          <input type="password" matInput [(ngModel)]="password" name="password" />
+        </mat-form-field>
+
+        <button mat-raised-button class="primary" type="button" (click)="login()">
+          Ingresar
+        </button>
+
+      </form>
+
+    </div>
+
+    <!-- IMAGEN -->
+    <div class="hero-image">
+      <img src="./assets/Padres.png" alt="Padres usando app" />
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ================= SERVICIOS ================= -->
+<section class="servicios" id="funcionalidades">
+
+  <h2>Nuestros servicios</h2>
+
+  <div class="cards">
+
+    <div class="card">
+      <img src="assets/Primero.png" alt="Calendario">
+      <h3>Calendario Compartido</h3>
+      <p>Coordina visitas, actividades y eventos en tiempo real.</p>
+    </div>
+
+    <div class="card">
+      <img src="assets/Recordatorios.png" alt="Agenda">
+      <h3>Agenda</h3>
+      <p>Sincroniza tareas y evita olvidos entre padres.</p>
+    </div>
+
+    <div class="card">
+      <img src="assets/roles.png" alt="Roles">
+      <h3>Define roles</h3>
+      <p>Perfiles diferenciados para padres e hijos.</p>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ================= FUNCIONES ================= -->
+<section class="funciones">
+
+  <h2>¿Qué deseas gestionar hoy?</h2>
+
+  <p>Organiza tu vida familiar con herramientas simples.</p>
+
+  <div class="cards">
+
+    <div class="card">
+      <img src="assets/Custodias y visitas.png" alt="Custodia">
+      <h3>Custodia y Visitas</h3>
+       <p>Consulta el horario visual de visitas y tiempos de crianza establecidos.</p>
+      <button>Ver calendario</button>
+    </div>
+
+    <div class="card">
+      <img src="assets/Calendario compartido.png" alt="Recordatorios">
+      <h3>Recordatorios</h3>
+      <p>Notificaciones sobre citas, tareas y actividades importantes para los hijos.</p>
+      <button>Ver recordatorios</button>
+    </div>
+
+    <div class="card">
+      <img src="assets/comunicacion.png" alt="Chat">
+      <h3>Comunicación</h3>
+      <p>Chat centralizado para mantener conversaciones claras y cordiales.</p>
+
+      <button>Ver mensajes</button>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ================= BENEFICIOS ================= -->
+<section class="beneficios-ordenados" id="beneficios">
+
+  <div class="container beneficios-flex">
+
+    <div class="beneficios-img">
+      <img src="assets/telefono-beneficios.png" alt="App en celular">
+    </div>
+
+    <div class="beneficios-lista">
+
+      <h2>Beneficios de usar DiviTime</h2>
+
+      <div class="beneficio">
+        <h3>Menos conflictos</h3>
+        <p>Reduce malentendidos entre padres.</p>
+      </div>
+
+      <div class="beneficio">
+        <h3>Organización clara</h3>
+        <p>Todo en un solo lugar.</p>
+      </div>
+
+      <div class="beneficio">
+        <h3>Bienestar emocional</h3>
+        <p>Mejor estabilidad para los hijos.</p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <p>&copy; 2025 DiviTime. Todos los derechos reservados.</p>
+</footer>

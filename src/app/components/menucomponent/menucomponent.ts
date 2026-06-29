@@ -47,4 +47,9 @@ export class Menucomponent {
     return this.role === 'TUTOR LEGAL';
   }
 
+   // o el bot si tienes ruta directa
 }
+
+
+
+

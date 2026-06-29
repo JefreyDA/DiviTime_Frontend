@@ -9,7 +9,6 @@
 
     <span class="spacer"></span>
 
-    <!-- USUARIO -->
     <button mat-button [matMenuTriggerFor]="menuUsuario">
       <mat-icon>person</mat-icon>
       Usuario
@@ -19,11 +18,10 @@
 
 </mat-toolbar>
 
-<!-- ===================== MENU PRINCIPAL ===================== -->
 
 <mat-menu #menu="matMenu">
 
-  <!-- ADMIN -->
+
   @if (isAdmin()) {
 
     <button mat-menu-item [matMenuTriggerFor]="rolMenu">
@@ -36,56 +34,70 @@
       Usuarios
     </button>
 
-  }
-
-  <!-- PADRE DE FAMILIA -->
-  @if (isPadre()) {
+    <button mat-menu-item [matMenuTriggerFor]="familyMenu">
+      <mat-icon>groups</mat-icon>
+      Familias
+    </button>
 
     <button mat-menu-item [matMenuTriggerFor]="eventMenu">
       <mat-icon>event</mat-icon>
       Eventos
     </button>
 
+  }
+
+
+  @if (isPadre()) {
+
     <button mat-menu-item [matMenuTriggerFor]="familyMenu">
       <mat-icon>groups</mat-icon>
       Familias
     </button>
 
+    <button mat-menu-item [matMenuTriggerFor]="eventMenu">
+      <mat-icon>event</mat-icon>
+      Eventos
+    </button>
+
     <button mat-menu-item [matMenuTriggerFor]="chatMenu">
       <mat-icon>chat</mat-icon>
-      Chat Emocional
+      Chat emocional
     </button>
 
   }
 
-  <!-- TUTOR LEGAL -->
+
   @if (isTutor()) {
+
+    <button mat-menu-item [matMenuTriggerFor]="familyMenu">
+      <mat-icon>groups</mat-icon>
+      Familias
+    </button>
+
+    <button mat-menu-item [matMenuTriggerFor]="eventMenu">
+      <mat-icon>event</mat-icon>
+      Eventos
+    </button>
 
     <button mat-menu-item [matMenuTriggerFor]="gastoMenu">
       <mat-icon>payments</mat-icon>
-      Tipo de Gasto
-    </button>
-
-    <button mat-menu-item>
-      <mat-icon>category</mat-icon>
-      Tipo de Acuerdo
+      Tipo de gasto
     </button>
 
   }
 
-  <!-- HIJO -->
+
   @if (isHijo()) {
 
     <button mat-menu-item>
       <mat-icon>school</mat-icon>
-      Mis Actividades
+      Mis eventos
     </button>
 
   }
 
 </mat-menu>
 
-<!-- ===================== MENU USUARIO ===================== -->
 
 <mat-menu #menuUsuario="matMenu">
 
@@ -94,97 +106,86 @@
     Cerrar sesión
   </button>
 
-  <button mat-menu-item>
+  <button mat-menu-item disabled>
     <mat-icon>badge</mat-icon>
     Rol: {{ role }}
   </button>
 
 </mat-menu>
 
-<!-- ===================== TIPO DE GASTO ===================== -->
-
-<mat-menu #gastoMenu="matMenu">
-  <button mat-menu-item routerLink="/expensestype/listar">
-    <mat-icon>list</mat-icon>
-    Listar
-  </button>
-
-  <button mat-menu-item routerLink="/expensestype/register">
-    <mat-icon>add</mat-icon>
-    Registrar
-  </button>
-</mat-menu>
-
-<!-- ===================== ROLES ===================== -->
 
 <mat-menu #rolMenu="matMenu">
   <button mat-menu-item routerLink="/role/list">
     <mat-icon>list</mat-icon>
-    Listar
+    Listar roles
   </button>
 </mat-menu>
 
-<!-- ===================== USUARIOS ===================== -->
 
 <mat-menu #userMenu="matMenu">
   <button mat-menu-item routerLink="/users/insert">
     <mat-icon>add</mat-icon>
-    Registrar
+    Registrar usuario
   </button>
 
   <button mat-menu-item routerLink="/users/list">
     <mat-icon>list</mat-icon>
-    Listar
+    Listar usuarios
   </button>
 </mat-menu>
 
-<!-- ===================== EVENTOS ===================== -->
+<mat-menu #familyMenu="matMenu">
+  <button mat-menu-item routerLink="/family/listFamilies">
+    <mat-icon>list</mat-icon>
+    Listar familias
+  </button>
+
+  <button mat-menu-item routerLink="/family/insert-family">
+    <mat-icon>add</mat-icon>
+    Crear familia
+  </button>
+</mat-menu>
 
 <mat-menu #eventMenu="matMenu">
-  <button mat-menu-item routerLink="/events/insert">
-    <mat-icon>add</mat-icon>
-    Registrar
-  </button>
-
   <button mat-menu-item routerLink="/events/list">
     <mat-icon>list</mat-icon>
-    Listar
+    Listar eventos
+  </button>
+
+  <button mat-menu-item routerLink="/events/insert">
+    <mat-icon>add</mat-icon>
+    Crear evento
   </button>
 </mat-menu>
 
-<!-- ===================== CHAT ===================== -->
 
 <mat-menu #chatMenu="matMenu">
 
   <button mat-menu-item routerLink="/chats/insert">
     <mat-icon>add</mat-icon>
-    Registrar
+    Nuevo chat
   </button>
 
   <button mat-menu-item routerLink="/chats/list">
     <mat-icon>list</mat-icon>
-    Listar
+    Lista chats
   </button>
 
   <button mat-menu-item routerLink="/chats/bot/:idChat">
-    <mat-icon>smart_toy</mat-icon>
+    <mat-icon>IA</mat-icon>
     Bot
   </button>
 
 </mat-menu>
 
-<!-- ===================== FAMILIAS ===================== -->
-
-<mat-menu #familyMenu="matMenu">
-
-  <button mat-menu-item routerLink="/families/insert">
-    <mat-icon>add</mat-icon>
-    Registrar
-  </button>
-
-  <button mat-menu-item routerLink="/families/list">
+<mat-menu #gastoMenu="matMenu">
+  <button mat-menu-item routerLink="/expensestype/listar">
     <mat-icon>list</mat-icon>
-    Listar
+    Listar tipos de gasto
   </button>
 
+  <button mat-menu-item routerLink="/expensestype/register">
+    <mat-icon>add</mat-icon>
+    Registrar tipo de gasto
+  </button>
 </mat-menu>
