@@ -17,9 +17,28 @@ import { Familycomponent } from './components/familycomponent/familycomponent';
 import { FamilyList } from './components/familycomponent/family-list/family-list';
 import { FamilyInsert } from './components/familycomponent/family-insert/family-insert';
 import { FamilyUpdate } from './components/familycomponent/family-update/family-update';
+import { Authenticate } from './components/authenticate/authenticate';
+import { Home } from './components/home/home';
 
 export const routes: Routes = [
+
+   {
+        path: '',
+        redirectTo: 'login',
+        pathMatch: 'full',
+    },
+    {
+        path: 'login',
+        component: Authenticate,
+    },
+
+    {
+  path: 'homes',
+  component: Home
+},
+
   {
+
     path: 'expensestype',
     component: ExpenseTypeComponent,
     children: [
