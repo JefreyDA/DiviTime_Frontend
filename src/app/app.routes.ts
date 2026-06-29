@@ -13,13 +13,37 @@ import { Eventcomponent } from './components/eventcomponent/eventcomponent';
 import { EventList } from './components/eventcomponent/event-list/event-list';
 import { EventInsert } from './components/eventcomponent/event-insert/event-insert';
 import { EventUpdate } from './components/eventcomponent/event-update/event-update';
+import { Familycomponent } from './components/familycomponent/familycomponent';
+import { FamilyList } from './components/familycomponent/family-list/family-list';
+import { FamilyInsert } from './components/familycomponent/family-insert/family-insert';
+import { FamilyUpdate } from './components/familycomponent/family-update/family-update';
+import { Authenticate } from './components/authenticate/authenticate';
+import { Home } from './components/home/home';
+
 import { Chatcomponent } from './components/chatcomponent/chatcomponent';
 import { ChatBot } from './components/chatcomponent/chat-bot/chat-bot';
 import { ChatInsert } from './components/chatcomponent/chat-insert/chat-insert';
 import { ChatList } from './components/chatcomponent/chat-list/chat-list';
 
 export const routes: Routes = [
+
+   {
+        path: '',
+        redirectTo: 'login',
+        pathMatch: 'full',
+    },
+    {
+        path: 'login',
+        component: Authenticate,
+    },
+
+    {
+  path: 'homes',
+  component: Home
+},
+
   {
+
     path: 'expensestype',
     component: ExpenseTypeComponent,
     children: [
