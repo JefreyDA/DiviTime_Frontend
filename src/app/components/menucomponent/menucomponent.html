@@ -1,7 +1,5 @@
 <mat-toolbar class="custom-toolbar">
-
   @if (verificar()) {
-
     <button mat-button [matMenuTriggerFor]="menu">
       <mat-icon>menu</mat-icon>
       Módulos
@@ -13,17 +11,11 @@
       <mat-icon>person</mat-icon>
       Usuario
     </button>
-
   }
-
 </mat-toolbar>
 
-
 <mat-menu #menu="matMenu">
-
-
   @if (isAdmin()) {
-
     <button mat-menu-item [matMenuTriggerFor]="rolMenu">
       <mat-icon>badge</mat-icon>
       Roles
@@ -43,12 +35,13 @@
       <mat-icon>event</mat-icon>
       Eventos
     </button>
-
+    <button mat-menu-item [matMenuTriggerFor]="agreementTypeMenu">
+      <mat-icon>handshake</mat-icon>
+      Tipo de Acuerdo
+    </button>
   }
 
-
   @if (isPadre()) {
-
     <button mat-menu-item [matMenuTriggerFor]="familyMenu">
       <mat-icon>groups</mat-icon>
       Familias
@@ -63,12 +56,9 @@
       <mat-icon>chat</mat-icon>
       Chat emocional
     </button>
-
   }
 
-
   @if (isTutor()) {
-
     <button mat-menu-item [matMenuTriggerFor]="familyMenu">
       <mat-icon>groups</mat-icon>
       Familias
@@ -83,24 +73,17 @@
       <mat-icon>payments</mat-icon>
       Tipo de gasto
     </button>
-
   }
 
-
   @if (isHijo()) {
-
     <button mat-menu-item>
       <mat-icon>school</mat-icon>
       Mis eventos
     </button>
-
   }
-
 </mat-menu>
 
-
 <mat-menu #menuUsuario="matMenu">
-
   <button mat-menu-item (click)="cerrar()">
     <mat-icon>logout</mat-icon>
     Cerrar sesión
@@ -110,9 +93,7 @@
     <mat-icon>badge</mat-icon>
     Rol: {{ role }}
   </button>
-
 </mat-menu>
-
 
 <mat-menu #rolMenu="matMenu">
   <button mat-menu-item routerLink="/role/list">
@@ -120,7 +101,6 @@
     Listar roles
   </button>
 </mat-menu>
-
 
 <mat-menu #userMenu="matMenu">
   <button mat-menu-item routerLink="/users/insert">
@@ -158,9 +138,7 @@
   </button>
 </mat-menu>
 
-
 <mat-menu #chatMenu="matMenu">
-
   <button mat-menu-item routerLink="/chats/insert">
     <mat-icon>add</mat-icon>
     Nuevo chat
@@ -175,7 +153,6 @@
     <mat-icon>IA</mat-icon>
     Bot
   </button>
-
 </mat-menu>
 
 <mat-menu #gastoMenu="matMenu">
@@ -188,4 +165,17 @@
     <mat-icon>add</mat-icon>
     Registrar tipo de gasto
   </button>
+</mat-menu>
+<mat-menu #agreementTypeMenu="matMenu">
+
+  <button mat-menu-item routerLink="/agreementtype/list">
+    <mat-icon>list</mat-icon>
+    Listar tipos de acuerdo
+  </button>
+
+  <button mat-menu-item routerLink="/agreementtype/register">
+    <mat-icon>add</mat-icon>
+    Registrar tipo de acuerdo
+  </button>
+
 </mat-menu>

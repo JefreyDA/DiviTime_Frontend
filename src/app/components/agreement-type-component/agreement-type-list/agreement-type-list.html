@@ -1,0 +1,52 @@
+<div class="container">
+    <h2>Lista de Tipos de Acuerdo</h2>
+
+    <div>
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+            <!-- ID -->
+            <ng-container matColumnDef="c1">
+                <th mat-header-cell *matHeaderCellDef>ID</th>
+                <td mat-cell *matCellDef="let element">
+                    {{element.idAgreementType}}
+                </td>
+            </ng-container>
+
+            <!-- Nombre -->
+            <ng-container matColumnDef="c2">
+                <th mat-header-cell *matHeaderCellDef>Tipo de Acuerdo</th>
+                <td mat-cell *matCellDef="let element">
+                    {{element.nameAgreementType}}
+                </td>
+            </ng-container>
+
+            <!-- Eliminar -->
+            <ng-container matColumnDef="c3">
+                <th mat-header-cell *matHeaderCellDef>Eliminar</th>
+                <td mat-cell *matCellDef="let element">
+                    <button
+                        matMiniFab
+                        color="warn"
+                        (click)="eliminar(element.idAgreementType)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+
+            <!-- Editar -->
+            <ng-container matColumnDef="c4">
+                <th mat-header-cell *matHeaderCellDef>Editar</th>
+                <td mat-cell *matCellDef="let element">
+                    <button
+                        [routerLink]="['/agreementtype/update', element.idAgreementType]">
+                        Editar
+                    </button>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        </table>
+    </div>
+</div>
