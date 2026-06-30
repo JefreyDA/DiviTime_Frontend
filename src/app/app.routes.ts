@@ -24,26 +24,27 @@ import { Chatcomponent } from './components/chatcomponent/chatcomponent';
 import { ChatBot } from './components/chatcomponent/chat-bot/chat-bot';
 import { ChatInsert } from './components/chatcomponent/chat-insert/chat-insert';
 import { ChatList } from './components/chatcomponent/chat-list/chat-list';
-
+import { AgreementTypeComponent } from './components/agreement-type-component/agreement-type-component';
+import { AgreementTypeList } from './components/agreement-type-component/agreement-type-list/agreement-type-list';
+import { AgreementTypeInsert } from './components/agreement-type-component/agreement-type-insert/agreement-type-insert';
+import { AgreementTypeUpdate } from './components/agreement-type-component/agreement-type-update/agreement-type-update';
 export const routes: Routes = [
-
-   {
-        path: '',
-        redirectTo: 'login',
-        pathMatch: 'full',
-    },
-    {
-        path: 'login',
-        component: Authenticate,
-    },
-
-    {
-  path: 'homes',
-  component: Home
-},
+  {
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full',
+  },
+  {
+    path: 'login',
+    component: Authenticate,
+  },
 
   {
+    path: 'homes',
+    component: Home,
+  },
 
+  {
     path: 'expensestype',
     component: ExpenseTypeComponent,
     children: [
@@ -58,6 +59,24 @@ export const routes: Routes = [
       {
         path: 'edits/:id',
         component: ExpenseTypeUpdate,
+      },
+    ],
+  },
+  {
+    path: 'agreementtype',
+    component: AgreementTypeComponent,
+    children: [
+      {
+        path: 'list',
+        component: AgreementTypeList,
+      },
+      {
+        path: 'register',
+        component: AgreementTypeInsert,
+      },
+      {
+        path: 'update/:id',
+        component: AgreementTypeUpdate,
       },
     ],
   },
@@ -82,7 +101,7 @@ export const routes: Routes = [
       {
         path: `insert`,
         component: UserInsert,
-      }
+      },
       //{
       //path: 'edits/:email',
       //component: UserUpdate,
@@ -95,35 +114,34 @@ export const routes: Routes = [
     children: [
       {
         path: 'list',
-        component: EventList
+        component: EventList,
       },
       {
         path: 'insert',
-        component: EventInsert
+        component: EventInsert,
       },
       {
         path: 'update/:id',
-        component: EventUpdate
-      }
-    ]
+        component: EventUpdate,
+      },
+    ],
   },
   {
     path: 'chats',
     component: Chatcomponent,
     children: [
       {
-        path:'insert',
-        component: ChatInsert
+        path: 'insert',
+        component: ChatInsert,
       },
       {
-        path:'list',
-        component: ChatList
+        path: 'list',
+        component: ChatList,
       },
       {
         path: 'bot/:idChat',
         component: ChatBot,
-      }
+      },
     ],
   },
-
 ];

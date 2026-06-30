@@ -1,0 +1,27 @@
+<div class="container">
+  <div style="text-align: center; margin: 3%;">
+    <h2>Registrar Tipo de Acuerdo</h2>
+  </div>
+
+  <div style="text-align: center; margin: 3%;">
+    <form [formGroup]="form" (submit)="aceptar()">
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Nombre del Tipo de Acuerdo</mat-label>
+        <input
+          matInput
+          placeholder="Ej: Custodia Compartida"
+          formControlName="name">
+      </mat-form-field>
+
+      <br>
+
+      <div>
+        <button matButton="elevated">
+          Registrar
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>
