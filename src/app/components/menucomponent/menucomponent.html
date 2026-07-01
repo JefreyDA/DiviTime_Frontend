@@ -14,6 +14,12 @@
   }
 </mat-toolbar>
 
+
+
+
+
+
+
 <mat-menu #menu="matMenu">
   @if (isAdmin()) {
     <button mat-menu-item [matMenuTriggerFor]="rolMenu">
@@ -39,6 +45,14 @@
       <mat-icon>handshake</mat-icon>
       Tipo de Acuerdo
     </button>
+    <button mat-menu-item [matMenuTriggerFor]="gastoMenu">
+      <mat-icon>payments</mat-icon>
+      Gasto
+    </button>
+    <button mat-menu-item [matMenuTriggerFor]="tipogastoMenu">
+      <mat-icon>payments</mat-icon>
+      Tipo de gasto
+    </button>
   }
 
   @if (isPadre()) {
@@ -56,6 +70,11 @@
       <mat-icon>chat</mat-icon>
       Chat emocional
     </button>
+
+    <button mat-menu-item [matMenuTriggerFor]="gastoMenu">
+      <mat-icon>payments</mat-icon>
+      Gasto
+    </button>
   }
 
   @if (isTutor()) {
@@ -71,7 +90,7 @@
 
     <button mat-menu-item [matMenuTriggerFor]="gastoMenu">
       <mat-icon>payments</mat-icon>
-      Tipo de gasto
+      Gasto
     </button>
   }
 
@@ -156,6 +175,18 @@
 </mat-menu>
 
 <mat-menu #gastoMenu="matMenu">
+  <button mat-menu-item routerLink="/expense/listar">
+    <mat-icon>list</mat-icon>
+    Listar gasto
+  </button>
+
+  <button mat-menu-item routerLink="/expense/register">
+    <mat-icon>add</mat-icon>
+    Registrar gasto
+  </button>
+</mat-menu>
+
+<mat-menu #tipogastoMenu="matMenu">
   <button mat-menu-item routerLink="/expensestype/listar">
     <mat-icon>list</mat-icon>
     Listar tipos de gasto
@@ -179,3 +210,4 @@
   </button>
 
 </mat-menu>
+

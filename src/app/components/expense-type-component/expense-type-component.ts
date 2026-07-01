@@ -12,3 +12,4 @@ export class ExpenseTypeComponent {
   constructor(public route:ActivatedRoute){}
 
 }
+  

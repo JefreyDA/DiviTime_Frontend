@@ -1,0 +1,94 @@
+<div class="container">
+  <div style="text-align: center;margin: 3%;"><h2>Actualizar Gasto</h2></div>
+  <div style="text-align: center;margin: 3%;">
+    <form [formGroup]="form" (submit)="aceptar()">
+        <mat-form-field>
+  <mat-label>ID</mat-label>
+  <input matInput formControlName="id" readonly>
+</mat-form-field> 
+
+      <br />
+      <mat-form-field class="example-full-width">
+        <mat-label>Monto</mat-label>
+        <input matInput placeholder="Numero" formControlName="monto"/>
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-label>Descripción del tipo de acuerdo</mat-label>
+        <textarea matInput formControlName="descripcion"></textarea>
+        <mat-error>
+          @if (form.get('descripcion')?.hasError('required')) {
+            La descripcion es obligatorio.
+          }
+        </mat-error>
+      </mat-form-field>
+
+      <br />
+      <mat-form-field>
+        <mat-label>Url del gasto</mat-label>
+        <textarea matInput formControlName="url"></textarea>
+        <mat-error>
+          @if (form.get('url')?.hasError('required')) {
+            La url es obligatorio.
+          }
+        </mat-error>
+      </mat-form-field>
+    
+
+      <br />
+      <div style="margin: 0.5%">
+        <label>Estado</label>
+        <mat-radio-group aria-label="Estado" formControlName="estado">
+          <mat-radio-button [value]="true">Activo</mat-radio-button>
+          <mat-radio-button [value]="false">Inactivo</mat-radio-button>
+        </mat-radio-group>
+        <mat-error>
+          @if (form.get('estado')?.hasError('required')) {
+            La estado es obligatorio.
+          }
+        </mat-error>
+      </div>
+      <br />
+
+      <mat-form-field>
+        <mat-label>Fecha</mat-label>
+        <input matInput [matDatepicker]="pickerI" formControlName="dia" />
+        <mat-hint>DD/MM/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="pickerI"></mat-datepicker-toggle>
+        <mat-datepicker #pickerI></mat-datepicker>
+        <mat-error>
+          @if (form.get('dia')?.hasError('required')) {
+            La fecha es obligatoria.
+          }
+        </mat-error>
+      </mat-form-field>
+
+
+      <br />
+      <mat-form-field>
+        <mat-label>Tipo de Gasto</mat-label>
+        <mat-select formControlName="tipo">
+          @for (food of listaTipo; track food) {
+            <mat-option [value]="food.idExpenseType">{{ food.nameExpenseType }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <br />
+      <mat-form-field>
+        <mat-label>Usuario</mat-label>
+        <mat-select formControlName="usuario">
+          @for (food1 of listaUsuario; track food1) {
+            <mat-option [value]="food1.idUser">{{ food1.nameUser }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <br />
+
+      <div>
+            <button matButton="elevated">Actualizar</button>
+      </div>
+    </form>
+  </div>
+</div>

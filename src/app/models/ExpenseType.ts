@@ -3,9 +3,9 @@ export class ExpenseType{
     idExpenseType:number=0;
 
     
-    nameExpenseType:String="";
+    nameExpenseType:string="";
 
    
-   descriptionExpenseType:String="";
+   descriptionExpenseType:string="";
 
 }

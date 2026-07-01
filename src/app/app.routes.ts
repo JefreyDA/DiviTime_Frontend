@@ -28,6 +28,10 @@ import { AgreementTypeComponent } from './components/agreement-type-component/ag
 import { AgreementTypeList } from './components/agreement-type-component/agreement-type-list/agreement-type-list';
 import { AgreementTypeInsert } from './components/agreement-type-component/agreement-type-insert/agreement-type-insert';
 import { AgreementTypeUpdate } from './components/agreement-type-component/agreement-type-update/agreement-type-update';
+import { Expensecomponent } from './components/expensecomponent/expensecomponent';
+import { ExpenseList } from './components/expensecomponent/expense-list/expense-list';
+import { ExpenseInsert } from './components/expensecomponent/expense-insert/expense-insert';
+import { ExpenseUpdate } from './components/expensecomponent/expense-update/expense-update';
 export const routes: Routes = [
   {
     path: '',
@@ -43,6 +47,8 @@ export const routes: Routes = [
     path: 'homes',
     component: Home,
   },
+
+  
 
   {
     path: 'expensestype',
@@ -62,6 +68,26 @@ export const routes: Routes = [
       },
     ],
   },
+
+  {
+    path: 'expense',
+    component: Expensecomponent,
+    children: [
+      {
+        path: 'listar',
+        component: ExpenseList,
+      },
+      {
+        path: 'register',
+        component: ExpenseInsert,
+      },
+      {
+        path: 'edits/:id',
+        component: ExpenseUpdate,
+      },
+    ],
+  },
+  
   {
     path: 'agreementtype',
     component: AgreementTypeComponent,

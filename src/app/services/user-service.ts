@@ -16,6 +16,10 @@ export class UserService {
     return this.http.post(`${this.url}/register-users`, u);
   }
 
+  list(){
+    return this.http.get<InsertingUsers[]>(`${this.url}/list-users`);
+  }
+
   listAll() {
     return this.http.get<InsertingUsers[]>(`${this.url}/list-all-users`);
   }
