@@ -43,6 +43,11 @@ export const routes: Routes = [
     component: Authenticate,
   },
 
+  {
+    path: 'homes',
+    component: Home,
+  },
+
   
 
   {
