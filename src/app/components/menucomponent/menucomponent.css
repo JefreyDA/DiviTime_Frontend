@@ -12,3 +12,87 @@ button[mat-button] {
 mat-icon {
   margin-right: 6px;
 }
+
+
+
+
+.dashboard-container{
+    height: calc(100vh - 64px);
+}
+
+.dashboard-sidenav{
+    width:260px;
+    background:#fafafa;
+    border-right:1px solid #e0e0e0;
+}
+
+.dashboard-content{
+    padding:25px;
+    background:#f5f7fa;
+    min-height:100%;
+}
+
+.dashboard-content h2{
+    margin-bottom:20px;
+    color:#374151;
+}
+
+.cards{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+
+    gap:20px;
+
+}
+
+.chart-card{
+
+    border-radius:15px;
+
+}
+
+.chart-large{
+
+    grid-column:1/-1;
+
+}
+
+.placeholder{
+
+    height:250px;
+
+    border:3px dashed #cfd8dc;
+
+    border-radius:10px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:#90a4ae;
+
+}
+
+.placeholder mat-icon{
+
+    font-size:60px;
+
+    width:60px;
+
+    height:60px;
+
+    margin-bottom:10px;
+
+}
+
+.large{
+
+    height:380px;
+
+}

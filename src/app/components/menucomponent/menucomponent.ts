@@ -5,10 +5,14 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { LoginService } from '../../services/login-service';
+import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
 
 @Component({
   selector: 'app-menucomponent',
-  imports: [MatToolbarModule,MatButtonModule,MatIconModule,MatMenuModule,RouterLink],
+  imports: [MatToolbarModule,MatButtonModule,MatIconModule,MatMenuModule,RouterLink,MatCardModule,MatDividerModule,MatListModule,MatSidenavModule ],
   templateUrl: './menucomponent.html',
   styleUrl: './menucomponent.css',
 })
@@ -16,6 +20,7 @@ export class Menucomponent {
 
   role: string = '';
   usuario: string = '';
+  vistaSeleccionada = '';
 
   constructor(private loginService: LoginService,private router: Router) { }
 
@@ -25,6 +30,9 @@ export class Menucomponent {
   this.router.navigate(['/login']);
   }
 
+  seleccionarVista(vista: string) {
+  this.vistaSeleccionada = vista;
+}
 
   verificar() {
     this.role = this.loginService.showRole();
