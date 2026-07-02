@@ -16,10 +16,6 @@
 
 
 
-
-
-
-
 <mat-menu #menu="matMenu">
   @if (isAdmin()) {
     <button mat-menu-item [matMenuTriggerFor]="rolMenu">
@@ -53,6 +49,10 @@
       <mat-icon>payments</mat-icon>
       Tipo de gasto
     </button>
+    <button mat-menu-item [matMenuTriggerFor]="agreementMenu">
+      <mat-icon>handshake</mat-icon>
+      Acuerdos
+  </button>
   }
 
   @if (isPadre()) {
@@ -75,6 +75,11 @@
       <mat-icon>payments</mat-icon>
       Gasto
     </button>
+
+    <button mat-menu-item [matMenuTriggerFor]="agreementMenu">
+      <mat-icon>handshake</mat-icon>
+      Acuerdos
+  </button>
   }
 
   @if (isTutor()) {
@@ -92,6 +97,11 @@
       <mat-icon>payments</mat-icon>
       Gasto
     </button>
+
+    <button mat-menu-item [matMenuTriggerFor]="agreementMenu">
+      <mat-icon>handshake</mat-icon>
+      Acuerdos
+  </button>
   }
 
   @if (isHijo()) {
@@ -207,6 +217,19 @@
   <button mat-menu-item routerLink="/agreementtype/register">
     <mat-icon>add</mat-icon>
     Registrar tipo de acuerdo
+  </button>
+
+</mat-menu>
+<mat-menu #agreementMenu="matMenu">
+
+  <button mat-menu-item routerLink="/agreement/list">
+    <mat-icon>list</mat-icon>
+    Listar acuerdos
+  </button>
+
+  <button mat-menu-item routerLink="/agreement/register">
+    <mat-icon>add</mat-icon>
+    Registrar acuerdo
   </button>
 
 </mat-menu>

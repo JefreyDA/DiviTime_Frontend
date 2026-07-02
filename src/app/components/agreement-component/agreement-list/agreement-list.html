@@ -1,0 +1,69 @@
+<div class="container">
+    <h2>Lista de Acuerdos</h2>
+    <div>
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <!-- ID -->
+            <ng-container matColumnDef="c1">
+                <th mat-header-cell *matHeaderCellDef>ID</th>
+                <td mat-cell *matCellDef="let element">
+                    {{element.idAgreement}}
+                </td>
+            </ng-container>
+
+            <!-- Título -->
+            <ng-container matColumnDef="c2">
+                <th mat-header-cell *matHeaderCellDef>Título</th>
+                <td mat-cell *matCellDef="let element">
+                    {{element.titleAgreement}}
+                </td>
+            </ng-container>
+
+            <!-- Descripción -->
+            <ng-container matColumnDef="c3">
+                <th mat-header-cell *matHeaderCellDef>Descripción</th>
+                <td mat-cell *matCellDef="let element">
+                    {{element.descriptionAgreement}}
+                </td>
+            </ng-container>
+
+            <!-- Fecha -->
+            <ng-container matColumnDef="c4">
+                <th mat-header-cell *matHeaderCellDef>Fecha</th>
+                <td mat-cell *matCellDef="let element">
+                    {{element.creationDate}}
+                </td>
+            </ng-container>
+
+            <!-- Eliminar -->
+            <ng-container matColumnDef="c5">
+                <th mat-header-cell *matHeaderCellDef>Eliminar</th>
+                <td mat-cell *matCellDef="let element">
+                    <button
+                        matMiniFab
+                        color="warn"
+                        aria-label="Eliminar acuerdo"
+                        (click)="eliminar(element.idAgreement)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+
+            <!-- Editar -->
+            <ng-container matColumnDef="c6">
+                <th mat-header-cell *matHeaderCellDef>Editar</th>
+                <td mat-cell *matCellDef="let element">
+                    <button
+                        [routerLink]="['/agreement/update', element.idAgreement]">
+                        Editar
+                    </button>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        </table>
+
+    </div>
+
+</div>

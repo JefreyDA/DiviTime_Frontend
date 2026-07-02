@@ -1,0 +1,90 @@
+<div class="container">
+
+  <div style="text-align:center;margin:3%;">
+    <h2>Registrar Acuerdo</h2>
+  </div>
+
+  <div style="text-align:center;margin:3%;">
+
+    <form [formGroup]="form" (ngSubmit)="aceptar()">
+
+      <mat-form-field>
+        <mat-label>Título</mat-label>
+        <input matInput formControlName="title">
+      </mat-form-field>
+
+      <br>
+
+      <mat-form-field>
+        <mat-label>Descripción</mat-label>
+        <textarea matInput formControlName="description"></textarea>
+      </mat-form-field>
+
+      <br>
+
+      <mat-form-field>
+        <mat-label>Fecha</mat-label>
+        <input
+          matInput
+          [matDatepicker]="picker"
+          formControlName="date">
+
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker">
+        </mat-datepicker-toggle>
+
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <br>
+
+      <mat-form-field>
+
+        <mat-label>Familia</mat-label>
+
+        <mat-select formControlName="family">
+
+          @for(f of familias; track f.idFamily){
+
+            <mat-option [value]="f.idFamily">
+              {{f.nameFamily}}
+            </mat-option>
+
+          }
+
+        </mat-select>
+
+      </mat-form-field>
+
+      <br>
+
+      <mat-form-field>
+
+        <mat-label>Tipo de Acuerdo</mat-label>
+
+        <mat-select formControlName="agreementType">
+
+          @for(t of tipos; track t.idAgreementType){
+
+            <mat-option [value]="t.idAgreementType">
+              {{t.nameAgreementType}}
+            </mat-option>
+
+          }
+
+        </mat-select>
+
+      </mat-form-field>
+
+      <br>
+
+      <button matButton="elevated">
+        Registrar
+      </button>
+
+    </form>
+
+  </div>
+
+</div>

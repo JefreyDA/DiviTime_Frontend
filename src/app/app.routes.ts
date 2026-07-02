@@ -33,6 +33,11 @@ import { ExpenseList } from './components/expensecomponent/expense-list/expense-
 import { ExpenseInsert } from './components/expensecomponent/expense-insert/expense-insert';
 import { ExpenseUpdate } from './components/expensecomponent/expense-update/expense-update';
 import { FamilyJoin } from './components/familycomponent/family-join/family-join';
+import { AgreementComponent } from './components/agreement-component/agreement-component';
+import { AgreementList } from './components/agreement-component/agreement-list/agreement-list';
+import { AgreementInsert } from './components/agreement-component/agreement-insert/agreement-insert';
+import { AgreementUpdate } from './components/agreement-component/agreement-update/agreement-update';
+
 export const routes: Routes = [
   {
     path: '',
@@ -189,5 +194,23 @@ export const routes: Routes = [
         component: ChatBot,
       },
     ],
+  },
+  {
+    path: 'agreement',
+    component: AgreementComponent,
+    children: [
+      {
+        path: 'list',
+        component: AgreementList,
+      },
+      {
+        path: 'insert',
+        component: AgreementInsert,
+      },
+      {
+        path: 'update/:id',
+        component: AgreementUpdate,
+      },
+    ]
   },
 ];
