@@ -8,10 +8,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { provideNativeDateAdapter } from '@angular/material/core';
+import { LoginService } from '../../../services/login-service';
+import { UserService } from '../../../services/user-service';
 
 @Component({
   selector: 'app-family-list',
@@ -41,7 +43,10 @@ export class FamilyList implements OnInit {
   constructor(
     private fS: FamilyService,
     private snackBar: MatSnackBar,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private loginService: LoginService,
+    private userService: UserService,
+    private router: Router,
   ) {
     this.filterForm = this.fb.group({
       fechaInicio: [null],
@@ -95,10 +100,46 @@ export class FamilyList implements OnInit {
     return date.toISOString().split('T')[0];
   }
 
+
   eliminar(id: number) {
-    this.fS.delete(id).subscribe(() => {
-      this.cargarFamilias();
-      this.snackBar.open('Se eliminó correctamente', 'Cerrar', { duration: 3000 });
+    this.fS.delete(id).subscribe({
+      next: () => {
+        this.cargarFamilias();
+        this.snackBar.open('Se eliminó correctamente', 'Cerrar', { duration: 3000 });
+      },
+      error: () => {
+        this.snackBar.open('Los usuarios deben salir de la familia antes de eliminarla',
+          'Cerrar',
+          { duration: 5000 }
+        );
+      }
+    });
+  }
+
+  ingresarFamilia() {
+    this.router.navigate(['/families/join']);
+  }
+
+  salirFamilia() {
+    const confirmado = confirm('¿Seguro que quieres salir de tu familia actual?');
+    if (!confirmado) return;
+
+    const email = this.loginService.showEmail();
+
+    if (!email) {
+      this.snackBar.open('No se pudo identificar al usuario, vuelve a iniciar sesión', 'Cerrar', { duration: 3000 });
+      return;
+    }
+
+    this.userService.getByEmail(email).subscribe({
+      next: (user) => {
+        this.fS.leaveFamily(user.idUser).subscribe({
+          next: () => {
+            this.snackBar.open('Saliste de la familia', 'Cerrar', { duration: 3000 });
+            this.cargarFamilias();
+          },
+        });
+      },
     });
   }
 }

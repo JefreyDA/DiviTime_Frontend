@@ -1,34 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { provideNativeDateAdapter } from '@angular/material/core';
-import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
-import { MatRadioModule } from '@angular/material/radio';
-import { Family } from '../../../models/familyModels/Family';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { FamilyService } from '../../../services/family-service';
-import { LoginService } from '../../../services/login-service'; // ajusta el path
-import { UserService } from '../../../services/user-service'; // ajusta el path
+import { LoginService } from '../../../services/login-service';
+import { UserService } from '../../../services/user-service';
 import { Router } from '@angular/router';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-family-insert',
+  selector: 'app-family-join',
   imports: [
     MatInputModule,
-    MatDatepickerModule,
-    MatRadioModule,
+    MatFormFieldModule,
     MatButtonModule,
     MatSnackBarModule,
     ReactiveFormsModule
   ],
-  templateUrl: './family-insert.html',
-  providers: [provideNativeDateAdapter()],
-  styleUrl: './family-insert.css',
+  templateUrl: './family-join.html',
+  styleUrl: './family-join.css',
 })
-export class FamilyInsert implements OnInit {
+export class FamilyJoin implements OnInit {
   form: FormGroup = new FormGroup({});
-  fa: Family = new Family();
 
   constructor(
     private fS: FamilyService,
@@ -41,9 +35,7 @@ export class FamilyInsert implements OnInit {
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      name: ['', [Validators.required, Validators.maxLength(50)]],
-      creationdate: ['', Validators.required],
-      linkinvitation: ['', [Validators.required, Validators.maxLength(50)]],
+      link: ['', Validators.required],
     });
   }
 
@@ -58,15 +50,9 @@ export class FamilyInsert implements OnInit {
 
       this.userService.getByEmail(email).subscribe({
         next: (user) => {
-          this.fa.nameFamily = this.form.value.name;
-          this.fa.creationDate = this.form.value.creationdate;
-          this.fa.linkInvitationFamily = this.form.value.linkinvitation;
-          this.fa.idCreatorFamily = user.idUser;
-
-          this.fS.insert(this.fa).subscribe({
+          this.fS.joinFamily(user.idUser, this.form.value.link).subscribe({
             next: () => {
-              this.snackBar.open('Familia registrada exitosamente', 'Cerrar', { duration: 3000 });
-              this.form.reset();
+              this.snackBar.open('Te uniste a la familia exitosamente', 'Cerrar', { duration: 3000 });
               this.router.navigate(['/families/list']);
             },
           });

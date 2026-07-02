@@ -45,12 +45,10 @@
             }
         </mat-form-field>
         <br />
-        <mat-form-field class="example-full-width">
+        
+        <mat-form-field>
             <mat-label>ID Usuario</mat-label>
-            <input matInput type="number" formControlName="idcreator"/>
-            @if (form.get('idcreator')?.hasError('required')) {
-                <mat-error>El ID de usuario es obligatorio</mat-error>
-            }
+            <input matInput placeholder="IdentificadorUsuario" formControlName="idcreator" readonly="true"/>
         </mat-form-field>
         <br />
         

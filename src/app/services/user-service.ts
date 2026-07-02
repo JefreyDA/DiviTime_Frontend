@@ -10,13 +10,13 @@ const base_url = environment.base;
 export class UserService {
   private url = `${base_url}/api/users`;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   insert(u: InsertingUsers) {
     return this.http.post(`${this.url}/register-users`, u);
   }
 
-  list(){
+  list() {
     return this.http.get<InsertingUsers[]>(`${this.url}/list-users`);
   }
 
@@ -43,7 +43,11 @@ export class UserService {
   }
 
   //Método para obtener a un usuario mediante su ID
-  getById(id:number){
+  getById(id: number) {
     return this.http.get<InsertingUsers>(`${this.url}/list-user-by-id/${id}`)
+  }
+
+  getByEmail(email: string) {
+    return this.http.get<InsertingUsers>(`${this.url}/list-by-email/${email}`);
   }
 }

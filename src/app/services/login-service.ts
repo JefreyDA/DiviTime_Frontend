@@ -38,5 +38,14 @@ export class LoginService {
     return decodedToken?.roles || null;
   }
 
-  
+  showEmail() {
+    let token = sessionStorage.getItem('token');
+    if (!token) return null;
+    const helper = new JwtHelperService();
+    const decodedToken = helper.decodeToken(token);
+
+    console.log(decodedToken);
+    return decodedToken?.sub || null; 
+  }
+
 }
