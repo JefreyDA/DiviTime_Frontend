@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { Eventservice } from '../../../services/event-service';
 import { Event } from '../../../models/eventModels/Event';
+import { LoginService } from '../../../services/login-service';
+import { UserService } from '../../../services/user-service';
 
 @Component({
   selector: 'app-event-insert',
@@ -33,6 +35,8 @@ export class EventInsert implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder,
     private snackBar: MatSnackBar,
+    private loginService: LoginService,
+    private userService: UserService,
   ) { }
 
   ngOnInit(): void {
@@ -43,7 +47,6 @@ export class EventInsert implements OnInit {
       enddate: ['', Validators.required],
       creationdate: ['', Validators.required],
       location: ['', [Validators.required, Validators.maxLength(50)]],
-      iduser: ['', Validators.required],
     });
   }
 
@@ -60,19 +63,30 @@ export class EventInsert implements OnInit {
         return;
       }
 
-      this.ev.titleEvent = this.form.value.title;
-      this.ev.detailsEvent = this.form.value.details;
-      this.ev.startDateEvent = this.form.value.startdate;
-      this.ev.endDateEvent = this.form.value.enddate;
-      this.ev.creationDateEvent = this.form.value.creationdate;
-      this.ev.locationEvent = this.form.value.location;
-      this.ev.idUser = this.form.value.iduser;
+      const email = this.loginService.showEmail();
 
-      this.eS.insert(this.ev).subscribe({
-        next: () => {
-          this.snackBar.open('Evento registrado exitosamente', 'Cerrar', { duration: 3000 });
-          this.form.reset();
-          this.router.navigate(['/events/list']);
+      if (!email) {
+        this.snackBar.open('No se pudo identificar al usuario, vuelve a iniciar sesión', 'Cerrar', { duration: 3000 });
+        return;
+      }
+
+      this.userService.getByEmail(email).subscribe({
+        next: (user) => {
+          this.ev.titleEvent = this.form.value.title;
+          this.ev.detailsEvent = this.form.value.details;
+          this.ev.startDateEvent = this.form.value.startdate;
+          this.ev.endDateEvent = this.form.value.enddate;
+          this.ev.creationDateEvent = this.form.value.creationdate;
+          this.ev.locationEvent = this.form.value.location;
+          this.ev.idUser = user.idUser;
+
+          this.eS.insert(this.ev).subscribe({
+            next: () => {
+              this.snackBar.open('Evento registrado exitosamente', 'Cerrar', { duration: 3000 });
+              this.form.reset();
+              this.router.navigate(['/events/list']);
+            },
+          });
         },
       });
     }

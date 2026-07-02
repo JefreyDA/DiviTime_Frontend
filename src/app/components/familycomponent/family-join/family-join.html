@@ -1,0 +1,23 @@
+<div class="container">
+  <div style="text-align: center; margin: 3%;"><h2>Ingresar a una Familia</h2></div>
+  <div style="text-align: center; margin: 3%;">
+    <form [formGroup]="form" (submit)="aceptar()">
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Link de invitación</mat-label>
+        <input matInput placeholder="Pega el link aquí" formControlName="link"/>
+        @if (form.get('link')?.hasError('required')) {
+          <mat-error>El link es obligatorio</mat-error>
+        }
+      </mat-form-field>
+      <br />
+
+      <div>
+        <button mat-raised-button color="primary" type="submit">Ingresar</button>
+        &nbsp;
+        <button mat-raised-button color="warn" type="button" (click)="cancelar()">Cancelar</button>
+      </div>
+
+    </form>
+  </div>
+</div>

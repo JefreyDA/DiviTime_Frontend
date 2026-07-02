@@ -10,9 +10,9 @@ const base_url = environment.base;
 export class Eventservice {
   private url = `${base_url}/api/event`;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  list(){
+  list() {
     return this.http.get<Event[]>(`${this.url}/list-events`)
   }
 
@@ -30,5 +30,13 @@ export class Eventservice {
 
   update(e: Event) {
     return this.http.put(`${this.url}/update-event`, e, { responseType: 'text' })
+  }
+
+  listByUser(idUser: number) {
+    return this.http.get<Event[]>(`${this.url}/list-events-by-user/${idUser}`);
+  }
+
+  listByFamily(idFamily: number) {
+    return this.http.get<Event[]>(`${this.url}/list-events-by-family/${idFamily}`);
   }
 }

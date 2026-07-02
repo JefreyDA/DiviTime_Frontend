@@ -168,3 +168,65 @@ table {
     flex-direction: column;
   }
 }
+
+.acciones-familia {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  padding: 16px 24px;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(30, 41, 59, 0.08);
+  border-radius: 20px;
+  box-shadow:
+    0 22px 55px rgba(80, 102, 153, 0.1),
+    0 3px 12px rgba(55, 71, 107, 0.05);
+}
+
+:host ::ng-deep .acciones-familia button.mat-mdc-raised-button {
+  border-radius: 12px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  padding: 0 20px;
+  height: 42px;
+  box-shadow: none;
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease;
+}
+
+:host ::ng-deep .acciones-familia button.mat-mdc-raised-button:hover {
+  transform: translateY(-2px);
+}
+
+:host ::ng-deep .acciones-familia button[color="primary"] {
+  --mdc-protected-button-container-color: #3f537c;
+  --mdc-protected-button-label-text-color: #ffffff;
+}
+
+:host ::ng-deep .acciones-familia button[color="primary"]:hover {
+  box-shadow: 0 8px 18px rgba(63, 83, 124, 0.3);
+}
+
+:host ::ng-deep .acciones-familia button[color="warn"] {
+  --mdc-protected-button-container-color: #fff0ef;
+  --mdc-protected-button-label-text-color: #d42018;
+}
+
+:host ::ng-deep .acciones-familia button[color="warn"]:hover {
+  --mdc-protected-button-container-color: #d42018;
+  --mdc-protected-button-label-text-color: #ffffff;
+  box-shadow: 0 8px 18px rgba(212, 32, 24, 0.26);
+}
+
+:host ::ng-deep .acciones-familia mat-icon {
+  margin-right: 4px;
+  vertical-align: middle;
+}
+
+@media (max-width: 720px) {
+  .acciones-familia {
+    padding: 12px 16px;
+  }
+}

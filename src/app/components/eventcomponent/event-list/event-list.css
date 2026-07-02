@@ -147,3 +147,28 @@ full-calendar {
   color: #246b9a;
   font-weight: 600;
 }
+
+.filtro-eventos {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+  padding: 16px 24px;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(30, 41, 59, 0.08);
+  border-radius: 20px;
+  box-shadow:
+    0 22px 55px rgba(80, 102, 153, 0.1),
+    0 3px 12px rgba(55, 71, 107, 0.05);
+}
+
+:host ::ng-deep .filtro-eventos .mat-mdc-radio-group {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+:host ::ng-deep .filtro-eventos .mdc-label {
+  color: #3f537c;
+  font-weight: 600;
+}

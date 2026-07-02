@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatRadioModule } from '@angular/material/radio';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { RouterLink } from '@angular/router';
@@ -12,6 +13,12 @@ import { FullCalendarModule, FullCalendarComponent } from '@fullcalendar/angular
 import { CalendarOptions } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
+import { LoginService } from '../../../services/login-service';
+import { UserService } from '../../../services/user-service';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { FormsModule } from '@angular/forms';
+
+type FiltroTipo = 'todos' | 'mios' | 'familia';
 
 @Component({
   selector: 'app-event-list',
@@ -19,10 +26,13 @@ import interactionPlugin from '@fullcalendar/interaction';
     MatCardModule,
     MatIconModule,
     MatButtonModule,
+    MatRadioModule,
     MatPaginatorModule,
+    MatSnackBarModule,
     RouterLink,
     AsyncPipe,
-    FullCalendarModule
+    FullCalendarModule,
+    FormsModule,
   ],
   templateUrl: './event-list.html',
   styleUrl: './event-list.css',
@@ -30,6 +40,7 @@ import interactionPlugin from '@fullcalendar/interaction';
 export class EventList implements OnInit, AfterViewInit {
   listEvents: Event[] = [];
   dataSource: MatTableDataSource<Event> = new MatTableDataSource<Event>();
+  filtroSeleccionado: FiltroTipo = 'todos';
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild('calendar') calendarComponent!: FullCalendarComponent;
@@ -41,7 +52,12 @@ export class EventList implements OnInit, AfterViewInit {
     height: 'auto',
   };
 
-  constructor(private eS: Eventservice) { }
+  constructor(
+    private eS: Eventservice,
+    private loginService: LoginService,
+    private userService: UserService,
+    private snackBar: MatSnackBar,
+  ) { }
 
   ngOnInit(): void {
     this.cargarEventos();
@@ -51,14 +67,54 @@ export class EventList implements OnInit, AfterViewInit {
     this.dataSource.paginator = this.paginator;
   }
 
+  onFiltroChange() {
+    this.cargarEventos();
+  }
+
   cargarEventos() {
-    this.eS.list().subscribe({
-      next: (data) => {
-        this.listEvents = data;
-        this.dataSource.data = data;
-        this.updateCalendar(data);
+    if (this.filtroSeleccionado === 'todos') {
+      this.eS.list().subscribe({
+        next: (data) => this.aplicarDatos(data),
+        error: () => this.aplicarDatos([]),
+      });
+      return;
+    }
+
+    const email = this.loginService.showEmail();
+    if (!email) {
+      this.snackBar.open('No se pudo identificar al usuario, vuelve a iniciar sesión', 'Cerrar', { duration: 3000 });
+      return;
+    }
+
+    this.userService.getByEmail(email).subscribe({
+      next: (user) => {
+        if (this.filtroSeleccionado === 'mios') {
+          this.eS.listByUser(user.idUser).subscribe({
+            next: (data) => this.aplicarDatos(data),
+            error: () => this.aplicarDatos([]), 
+          });
+        } else if (this.filtroSeleccionado === 'familia') {
+          if (!user.idFamily) {
+            this.aplicarDatos([]);
+            this.snackBar.open('No perteneces a ninguna familia', 'Cerrar', { duration: 3000 });
+            return;
+          }
+          this.eS.listByFamily(user.idFamily).subscribe({
+            next: (data) => this.aplicarDatos(data),
+            error: () => this.aplicarDatos([]), 
+          });
+        }
       },
+      error: () => {
+        this.snackBar.open('No se pudo obtener el usuario', 'Cerrar', { duration: 3000 });
+      }
     });
+  }
+
+  private aplicarDatos(data: Event[]) {
+    this.listEvents = data;
+    this.dataSource.data = data;
+    this.updateCalendar(data);
   }
 
   private updateCalendar(data: Event[]) {
@@ -76,11 +132,7 @@ export class EventList implements OnInit, AfterViewInit {
 
   eliminar(id: number) {
     this.eS.delete(id).subscribe(() => {
-      this.eS.list().subscribe((data) => {
-        this.listEvents = data;
-        this.dataSource.data = data;
-        this.updateCalendar(data);
-      });
+      this.cargarEventos();
     });
   }
 }

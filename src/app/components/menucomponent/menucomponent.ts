@@ -48,7 +48,7 @@ export class Menucomponent {
   }
 
   isPadre() {
-    return this.role === 'PADRE DE FAMILIA';
+    return this.role === 'PADRE';
   }
 
   isTutor() {

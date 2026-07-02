@@ -1,6 +1,14 @@
 <div class="container">
   <h2>Lista de eventos</h2>
 
+  <div class="filtro-eventos">
+    <mat-radio-group [(ngModel)]="filtroSeleccionado" (change)="onFiltroChange()">
+      <mat-radio-button value="todos">Todos los eventos</mat-radio-button>
+      <mat-radio-button value="mios">Mis eventos</mat-radio-button>
+      <mat-radio-button value="familia">Eventos de mi familia</mat-radio-button>
+    </mat-radio-group>
+  </div>
+
   <div class="cards-container">
     @for (element of dataSource.connect() | async; track element.idEvent) {
     <mat-card class="evento-card">
@@ -29,11 +37,7 @@
     }
   </div>
 
-  <mat-paginator
-    [length]="dataSource.data.length"
-    [pageSize]="6"
-    [pageSizeOptions]="[6, 12, 24]"
-    showFirstLastButtons>
+  <mat-paginator [length]="dataSource.data.length" [pageSize]="6" [pageSizeOptions]="[6, 12, 24]" showFirstLastButtons>
   </mat-paginator>
 
   <h2 class="calendar-title">Calendario</h2>

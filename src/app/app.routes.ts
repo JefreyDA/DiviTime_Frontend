@@ -32,6 +32,7 @@ import { Expensecomponent } from './components/expensecomponent/expensecomponent
 import { ExpenseList } from './components/expensecomponent/expense-list/expense-list';
 import { ExpenseInsert } from './components/expensecomponent/expense-insert/expense-insert';
 import { ExpenseUpdate } from './components/expensecomponent/expense-update/expense-update';
+import { FamilyJoin } from './components/familycomponent/family-join/family-join';
 export const routes: Routes = [
   {
     path: '',
@@ -47,9 +48,6 @@ export const routes: Routes = [
     path: 'homes',
     component: Home,
   },
-
-  
-
   {
     path: 'expensestype',
     component: ExpenseTypeComponent,
@@ -150,6 +148,28 @@ export const routes: Routes = [
         path: 'update/:id',
         component: EventUpdate,
       },
+    ],
+  },
+  {
+    path: 'families',
+    component: Familycomponent,
+    children: [
+      {
+        path: 'list',
+        component: FamilyList,
+      },
+      {
+        path: 'insert',
+        component: FamilyInsert,
+      },
+      {
+        path: 'update/:id',
+        component: FamilyUpdate,
+      },
+      {
+        path: 'join',
+        component: FamilyJoin,
+      }
     ],
   },
   {

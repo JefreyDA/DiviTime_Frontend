@@ -26,6 +26,15 @@
         </div>
     </form>
 
+    <div class="acciones-familia">
+        <button mat-raised-button color="primary" (click)="ingresarFamilia()">
+            <mat-icon>group_add</mat-icon> Ingresar
+        </button>
+        <button mat-raised-button color="warn" (click)="salirFamilia()">
+            <mat-icon>logout</mat-icon> Salir
+        </button>
+    </div>
+
     <div>
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
