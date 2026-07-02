@@ -12,7 +12,16 @@ import { MatListModule } from '@angular/material/list';
 
 @Component({
   selector: 'app-menucomponent',
-  imports: [MatToolbarModule,MatButtonModule,MatIconModule,MatMenuModule,RouterLink,MatCardModule,MatDividerModule,MatListModule,MatSidenavModule ],
+  imports: [MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    MatMenuModule,
+    RouterLink,
+    MatCardModule,
+    MatDividerModule,
+    MatListModule,
+    MatSidenavModule ],
+
   templateUrl: './menucomponent.html',
   styleUrl: './menucomponent.css',
 })
@@ -52,7 +61,7 @@ export class Menucomponent {
   }
 
   isTutor() {
-    return this.role === 'TUTOR LEGAL';
+    return this.role === 'TUTOR_LEGAL';
   }
 
    // o el bot si tienes ruta directa
